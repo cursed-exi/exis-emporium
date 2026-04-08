@@ -1,0 +1,344 @@
+/* ===== Base Styles ===== */
+
+body {
+    background-color: #111;
+    color: #ddd;
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #9ad;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #fff;
+}
+
+header {
+    border-bottom: 2px solid #444;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* ===== Layout ===== */
+
+.container {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+main {
+    flex: 3;
+    padding: 20px;
+}
+
+aside {
+    flex: 1;
+    border-left: 2px solid #333;
+    padding: 20px;
+    background-color: #0d0d0d;
+}
+
+/* ===== Blog Posts ===== */
+
+.post {
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #444;
+}
+
+.post h2 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+
+.meta {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #222;
+    color: #ddd;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.extra {
+    display: none;
+}
+
+/* ===== Sidebar ===== */
+
+aside h3 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+/* ===== Footer ===== */
+
+footer {
+    text-align: center;
+    border-top: 2px solid #444;
+    padding: 10px;
+    font-size: 12px;
+    color: #777;
+    margin-top: 20px;
+}
+/* ===== Article Extras ===== */
+
+.image-placeholder {
+    border: 1px solid #555;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+    background-color: #0a0a0a;
+    color: #777;
+    font-size: 14px;
+}
+
+.quote-box {
+    border-left: 3px solid #666;
+    padding: 10px 15px;
+    margin: 20px 0;
+    background-color: #141414;
+    font-style: italic;
+    color: #ccc;
+}
+
+.stat-box {
+    border: 1px solid #555;
+    padding: 15px;
+    margin: 20px 0;
+    background-color: #101010;
+    font-size: 14px;
+}
+
+.note-box {
+    border: 1px dashed #555;
+    padding: 15px;
+    margin: 20px 0;
+    background-color: #0d0d0d;
+    font-size: 14px;
+}
+
+/* ===== Archive / Category Pages ===== */
+
+.archive-group {
+    margin-bottom: 40px;
+}
+
+.post-preview {
+    border-bottom: 1px dashed #444;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.post-preview h2 {
+    margin-bottom: 5px;
+}
+
+.read-link {
+    display: inline-block;
+    margin-top: 8px;
+}
+
+/* ===== Construction Banner ===== */
+
+.construction-banner {
+    border: 2px solid #666;
+    padding: 12px;
+    margin: 20px 0;
+    text-align: center;
+    background-color: #0c0c0c;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* subtle blinking effect */
+
+.blink {
+    animation: blink 1.4s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ===== License Notice ===== */
+
+.license-box {
+    border-top: 1px solid #444;
+    margin-top: 40px;
+    padding-top: 15px;
+    font-size: 13px;
+    color: #999;
+}
+
+.license-box strong {
+    color: #ccc;
+}
+
+.license-box a {
+    color: #9ad;
+}
+
+.license-box a:hover {
+    color: #fff;
+}
+
+/* ===== DnD 5e Statblock ===== */
+
+.statblock {
+
+    border: 1px solid #555;
+    background-color: #0f0f0f;
+
+    padding: 15px;
+    margin: 25px 0;
+
+    font-size: 14px;
+}
+
+.statblock h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.statblock .type {
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.statblock hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 8px 0;
+}
+
+.statblock .stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.statblock .stats div {
+    text-align: center;
+    flex: 1;
+}
+
+.statblock .stats strong {
+    display: block;
+	font-weight: bold;
+}
+
+.statblock .ability {
+    margin: 10px 0;
+}
+
+.statblock .action {
+    margin-top: 10px;
+}
+
+.statblock .action strong {
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Images ===== */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* unified image block */
+
+.image {
+    margin: 25px 0;
+    padding: 10px;
+
+    border: 1px solid #555;
+    background-color: #0a0a0a;
+
+    text-align: center;
+}
+
+/* actual image inside */
+
+.image img {
+    max-width: 300px;   /* controls actual image size */
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* caption */
+
+.image .caption {
+    font-size: 12px;
+    color: #888;
+    margin-top: 8px;
+}
+
+/* ===== Tables ===== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #1a1a1a;
+    color: #ccc;
+    font-weight: normal;
+}
+
+tr:nth-child(even) {
+    background-color: #101010;
+}
+
+tr:hover {
+    background-color: #181818;
+}
