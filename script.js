@@ -15,3 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// ===== READ MORE TOGGLE =====
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".toggle-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const extra = button.nextElementSibling;
+
+            if (extra.style.display === "block") {
+                extra.style.display = "none";
+                button.textContent = "Read More";
+            } else {
+                extra.style.display = "block";
+                button.textContent = "Read Less";
+            }
+        });
+    });
+});
