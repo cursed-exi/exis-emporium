@@ -150,6 +150,12 @@ footer {
     font-size: 14px;
 }
 
+.ability-name {
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
 /* ===== Archive / Category Pages ===== */
 
 .archive-group {
