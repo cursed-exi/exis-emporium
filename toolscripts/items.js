@@ -1,15 +1,23 @@
 const items = [
 {
-    id: "lantern_core",
-    name: "Lantern Core",
-    image: "../img/items/lantern_core.webp",
+    id: "moonweave_gloves",
+    name: "Moonweave Gloves",
+    image: "../img/items/moonweave_gloves.png",
 
-    type: "Wondrous Item",
-    rarity: "Rare",
+    type: "Equipment",
+    rarity: "Legendary",
     attunement: "Yes",
 
-    desc: "A softly glowing crystal.",
-    effect: "Cast Light at will. 1/day Daylight."
+    content: `
+        <p><em>Soft threads shimmer like captured moonlight.</em></p>
+
+        <p>You can cast <strong>Light</strong> at will.</p>
+
+        <div class="action">
+            <strong>Radiant Pulse.</strong> Once per day, you may cast
+            <strong>Daylight</strong> without expending a spell slot.
+        </div>
+    `
 }
 ];
 
@@ -62,11 +70,7 @@ function render(i) {
 
         <hr>
 
-        <p>${i.desc}</p>
-
-        <div class="action">
-            <strong>Effect.</strong> ${i.effect}
-        </div>
+        ${i.content || ""}
 
     </div>`;
 }

@@ -10,8 +10,15 @@ const spells = [
     components: "V, S",
     duration: "Instantaneous",
 
-    desc: "A burst of radiant light strikes a target.",
-    effect: "1d8 radiant damage."
+    content: `
+        <p><em>A sudden burst of radiant light erupts from your focus.</em></p>
+
+        <p>A burst of radiant light strikes a target.</p>
+
+        <div class="action">
+            <strong>Effect.</strong> The target takes <strong>1d8 radiant damage</strong>.
+        </div>
+    `
 }
 ];
 
@@ -66,11 +73,7 @@ function render(s) {
 
         <hr>
 
-        <p>${s.desc}</p>
-
-        <div class="action">
-            <strong>Effect.</strong> ${s.effect}
-        </div>
+        ${s.content || ""}
 
     </div>`;
 }
