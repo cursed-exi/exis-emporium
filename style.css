@@ -156,6 +156,14 @@ footer {
     letter-spacing: 0.5px;
 }
 
+.extra {
+  display: none;
+}
+
+.extra.show {
+  display: block;
+}
+
 /* ===== Archive / Category Pages ===== */
 
 .archive-group {
