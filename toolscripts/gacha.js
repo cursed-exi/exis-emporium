@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tile.textContent = banner.name;
 
-        // color border
         if (banner.color) {
             tile.style.borderColor = banner.color;
         }
@@ -97,60 +96,89 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBannerUI();
     updateSelection();
 
-    // ===== RENDER =====
+    // ===== RENDER ITEMS =====
 
     function renderItems(items) {
-    grid.innerHTML = "";
+        grid.innerHTML = "";
 
-    items.forEach((item) => {
+        items.forEach((item) => {
 
-        const div = document.createElement("div");
-        div.className = `gacha-item ${rarityClass(item.rarity)}`;
+            const div = document.createElement("div");
+            div.className = `gacha-item ${rarityClass(item.rarity)}`;
 
-        let revealed = false;
+            let revealed = false;
 
-        // start hidden
-        div.innerHTML = `<strong>?</strong>`;
+            // hidden state
+            div.innerHTML = `<strong>?</strong>`;
 
-        div.addEventListener("click", () => {
+            div.addEventListener("click", () => {
 
-            // first click → reveal
-            if (!revealed) {
-                revealed = true;
+                // first click → reveal
+                if (!revealed) {
+                    revealed = true;
 
-                div.innerHTML = `
-                    <div class="gacha-stars">${"★".repeat(item.stars)}</div>
-                    <div class="gacha-name">${item.name}</div>
-                `;
-            } 
-            // second click → show details
-            else {
-                detail.innerHTML = `
-                    <div class="gacha-stars">${"★".repeat(item.stars)}</div>
-                    <strong>${item.name}</strong><br>
-                    <em>${item.rarity}</em>
-                    <hr>
-                    ${item.desc}
-                    ${item.lore ? `<div class="quote-box">${item.lore}</div>` : ""}
-                `;
-            }
+                    div.innerHTML = `
+                        <div class="gacha-stars">${"★".repeat(item.stars)}</div>
+                        <div class="gacha-name">${item.name}</div>
+                    `;
+                } 
+                // second click → show full detail
+                else {
+                    // 🔧 remove outer box styling to avoid double border
+                    detail.style.border = "none";
+                    detail.style.padding = "0";
 
+                    detail.innerHTML = `
+                        <div class="statblock">
+
+                            ${item.image ? `
+                            <div class="image">
+                                <img src="${item.image}">
+                            </div>` : ""}
+
+                            <h4>${item.name}</h4>
+                            <div class="type">${item.rarity}</div>
+
+                            <hr>
+
+                            ${item.desc || ""}
+
+                            ${item.lore ? `
+                                <div class="quote-box">
+                                    ${item.lore}
+                                </div>
+                            ` : ""}
+
+                        </div>
+                    `;
+                }
+
+            });
+
+            grid.appendChild(div);
+
+            // save to inventory
+            saveLoot(item);
         });
-
-        grid.appendChild(div);
-        saveLoot(item);
-    });
-}
+    }
 
     // ===== BUTTONS =====
 
     rollBtn.addEventListener("click", () => {
-        detail.innerHTML = "The lantern flickers...";
+        // restore outer styling
+        detail.style.border = "";
+        detail.style.padding = "";
+
+        detail.innerHTML = "<em>The lantern flickers...</em>";
         renderItems([rollGacha()]);
     });
 
     multiBtn.addEventListener("click", () => {
-        detail.innerHTML = "The lantern surges...";
+        // restore outer styling
+        detail.style.border = "";
+        detail.style.padding = "";
+
+        detail.innerHTML = "<em>The lantern surges...</em>";
 
         let results = [];
         for (let i = 0; i < 10; i++) {
