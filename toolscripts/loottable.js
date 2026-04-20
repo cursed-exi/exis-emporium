@@ -81,7 +81,7 @@ const banners = {
                 name: "The Moonweave Gloves",
                 rarity: "Legendary",
                 stars: 5,
-                chance: 200,
+                chance: 2,
                 desc: `<p>The holiest gloves left behind by the Ikrir the Radiant Moon during her Apotheosis after the fight with the Starbeast.</p>
 
 						<div class="action">
