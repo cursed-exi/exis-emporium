@@ -15,7 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const el = document.getElementById("sidebar");
 
-  fetch("/exis-emporium/sidebar.html")
+  // Detect if we're in project repo (GitHub Pages)
+  const base = window.location.pathname.includes("/exis-emporium/")
+    ? "/exis-emporium"
+    : "";
+
+  fetch(base + "/sidebar.html")
     .then(res => {
       if (!res.ok) throw new Error("Sidebar not found: " + res.status);
       return res.text();
