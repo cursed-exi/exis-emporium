@@ -13,15 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/sidebar.html")
+  const el = document.getElementById("sidebar");
+
+  fetch("/exis-emporium/sidebar.html")
     .then(res => {
-      if (!res.ok) {
-        throw new Error("Sidebar not found: " + res.status);
-      }
+      if (!res.ok) throw new Error("Sidebar not found: " + res.status);
       return res.text();
     })
     .then(data => {
-      document.getElementById("sidebar").innerHTML = data;
+      el.innerHTML = data;
     })
     .catch(err => console.error(err));
 });
