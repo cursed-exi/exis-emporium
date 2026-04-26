@@ -11,3 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/sidebar.html")
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Sidebar not found: " + res.status);
+      }
+      return res.text();
+    })
+    .then(data => {
+      document.getElementById("sidebar").innerHTML = data;
+    })
+    .catch(err => console.error(err));
+});
