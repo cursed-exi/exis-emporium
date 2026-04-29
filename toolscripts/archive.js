@@ -9,6 +9,7 @@ const articles = [
     description: "A short introduction to my setting: Land of Sain - a description of village: Kerdrim",
     link: "../Articles/2026/los_kerdrim.html"
 },
+{
     id: "unbound_gear",
     title: "Unbound Gear",
     date: "2026-04-22",
