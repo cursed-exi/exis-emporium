@@ -606,3 +606,73 @@ tr:hover {
 .extra.show {
   display: block;
 }
+
+/* ===== UI CONTROLS (MATCH SEARCH STYLE) ===== */
+
+.ui-input,
+.ui-select,
+.ui-button {
+    background-color: #0d0d0d;
+    color: #ddd;
+
+    border: 1px solid #555;
+
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+
+    padding: 8px 10px;
+    box-sizing: border-box;
+
+    outline: none;
+}
+
+/* focus state (same as search) */
+.ui-input:focus,
+.ui-select:focus,
+.ui-button:focus {
+    border-color: #888;
+    background-color: #111;
+}
+
+/* ===== BUTTON ===== */
+
+.ui-button {
+    cursor: pointer;
+}
+
+.ui-button:hover {
+    background-color: #151515;
+    border-color: #777;
+}
+
+/* subtle press feel */
+.ui-button:active {
+    background-color: #1a1a1a;
+}
+
+/* ===== SELECT ===== */
+
+.ui-select {
+    cursor: pointer;
+}
+
+/* remove ugly default arrow (optional, cleaner look) */
+.ui-select {
+    appearance: none;
+}
+
+/* optional: custom dropdown arrow */
+.ui-select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.ui-select-wrapper::after {
+    content: "▾";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
