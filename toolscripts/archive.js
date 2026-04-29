@@ -2,7 +2,6 @@
 
 const articles = [
 {
-    {
     id: "los_kerdrim",
     title: "Land of Sain: Kerdrim",
     date: "2026-04-29",
