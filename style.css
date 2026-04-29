@@ -309,7 +309,13 @@ img {
 /* actual image inside */
 
 .image img {
+	max-width: 300px;   /* controls actual image size */
     width: 80%;
+    margin: 0 auto;
+}
+
+.image.map img {
+    width: 70%;
     margin: 0 auto;
 }
 
