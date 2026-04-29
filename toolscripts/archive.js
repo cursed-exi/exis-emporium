@@ -41,10 +41,12 @@ const articles = [
 document.addEventListener("DOMContentLoaded", () => {
 
     populateCategories();
+    populateYears();
     renderList(articles);
 
     document.getElementById("search-bar").addEventListener("input", filter);
     document.getElementById("category").addEventListener("change", filter);
+    document.getElementById("year").addEventListener("change", filter);
     document.getElementById("sort").addEventListener("change", filter);
 });
 
@@ -55,11 +57,13 @@ function filter() {
 
     const q = document.getElementById("search-bar").value.toLowerCase();
     const cat = document.getElementById("category").value;
+    const year = document.getElementById("year").value;
     const sort = document.getElementById("sort").value;
 
     let list = articles.filter(a =>
         a.title.toLowerCase().includes(q) &&
-        (cat === "all" || a.category === cat)
+        (cat === "all" || a.category === cat) &&
+        (year === "all" || a.date.startsWith(year))
     );
 
     // sorting
@@ -133,6 +137,28 @@ function populateCategories() {
         const opt = document.createElement("option");
         opt.value = c;
         opt.textContent = c;
+        select.appendChild(opt);
+    });
+}
+
+
+// ===== AUTO YEARS =====
+
+function populateYears() {
+
+    const select = document.getElementById("year");
+
+    const years = [...new Set(
+        articles.map(a => a.date.split("-")[0])
+    )];
+
+    // newest first
+    years.sort((a,b) => b - a);
+
+    years.forEach(y => {
+        const opt = document.createElement("option");
+        opt.value = y;
+        opt.textContent = y;
         select.appendChild(opt);
     });
 }
