@@ -2,6 +2,14 @@
 
 const articles = [
 {
+    {
+    id: "los_kerdrim",
+    title: "Land of Sain: Kerdrim",
+    date: "2026-04-29",
+    category: "Land of Sain",
+    description: "A short introduction to my setting: Land of Sain - a description of village: Kerdrim",
+    link: "../Articles/2026/los_kerdrim.html"
+},
     id: "unbound_gear",
     title: "Unbound Gear",
     date: "2026-04-22",
@@ -24,14 +32,6 @@ const articles = [
     category: "Mechanics Discussion",
     description: "Legendary Break System and boss design.",
     link: "../Articles/2026/breaking_the_npcs.html"
-},
-{
-    id: "yerdan_story",
-    title: "The Tale of Yerdan – how an elf became a unit",
-    date: "2026-04-01",
-    category: "Short Story",
-    description: "A chaotic tale from a campaign that became a running joke.",
-    link: "../index.html" // since it's inline on homepage
 }
 ];
 
