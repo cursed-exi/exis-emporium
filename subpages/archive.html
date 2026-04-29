@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Archive | Exi's Emporium</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <h1><a href="../index.html">Exi's Emporium</a></h1>
+    <p>The Land of the Paper Lantern Sage</p>
+</header>
+
+<div class="container">
+
+<main>
+
+<article class="post">
+
+<h2>Article Archive</h2>
+<div class="meta">Sorted knowledge, categorized and indexed</div>
+
+<!-- FILTER BOX -->
+<div class="note-box">
+
+<input class="ui-input" id="search-bar" placeholder="Search articles...">
+
+<br><br>
+
+<div class="ui-select-wrapper">
+    <select class="ui-select" id="category">
+        <option value="all">All Categories</option>
+    </select>
+</div>
+
+<div class="ui-select-wrapper">
+    <select class="ui-select" id="sort">
+        <option value="new">Newest</option>
+        <option value="old">Oldest</option>
+        <option value="name">Name</option>
+    </select>
+</div>
+
+</div>
+
+<!-- RESULTS -->
+<div id="article-list"></div>
+
+</article>
+
+</main>
+
+<aside id="sidebar"></aside>
+
+</div>
+
+<footer>
+    <p>Exi's Emporium © 2026 | ExiFlow</p>
+</footer>
+
+<script src="../toolscripts/archive.js"></script>
+<script src="/script.js"></script>
+
+</body>
+</html>
