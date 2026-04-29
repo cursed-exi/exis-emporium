@@ -306,6 +306,16 @@ img {
     text-align: center;
 }
 
+.map {
+    margin: 25px 0;
+    padding: 10px;
+
+    border: 1px solid #555;
+    background-color: #0a0a0a;
+
+    text-align: center;
+}
+
 /* actual image inside */
 
 .image img {
@@ -314,7 +324,7 @@ img {
     margin: 0 auto;
 }
 
-.image.map img {
+.map img {
     width: 70%;
     margin: 0 auto;
 }
