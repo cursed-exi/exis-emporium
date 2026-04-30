@@ -25,7 +25,7 @@ async function loadArticles() {
 
     const results = await Promise.all(
         years.map(y =>
-            fetch(`/exis-emporium/data/${y}.json`)
+            fetch(`/exis-emporium/data/articles/${y}.json`)
                 .then(res => {
                     if (!res.ok) return [];
                     return res.json();
