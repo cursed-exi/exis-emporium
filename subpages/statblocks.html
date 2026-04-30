@@ -24,7 +24,6 @@
 <div class="meta">Indexed entities and their threat ratings</div>
 
 <div class="license-box">
-
 <strong>License</strong>
 
 <p>
@@ -44,19 +43,36 @@ Creative Commons Attribution 4.0 International License
 <p>
 Original text on this page is © 2026 Exi's Emporium.
 </p>
-
 </div>
 
-<!-- DISPLAY FIRST -->
+<!-- DISPLAY -->
 <div id="statblock-display">
     Select an entry to inspect it.
 </div>
 
 <hr>
 
-<!-- SEARCH -->
+<!-- SEARCH + FILTERS -->
 <div class="note-box">
+
     <input id="search-bar" type="text" placeholder="Search the archive...">
+
+    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        
+        <select id="cr">
+            <option value="all">All CR</option>
+        </select>
+
+        <select id="type">
+            <option value="all">All Types</option>
+        </select>
+
+        <select id="size">
+            <option value="all">All Sizes</option>
+        </select>
+
+    </div>
+
 </div>
 
 <!-- LIST -->
