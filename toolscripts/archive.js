@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function loadArticles() {
 
-    const years = ["2026", "2027"]; // add more years here
+    const years = ["2026"]; // add more years here
 
     const results = await Promise.all(
         years.map(y =>
-            fetch(`../data/${y}.json`)
+            fetch(`/exis-emporium/data/${y}.json`)
                 .then(res => {
                     if (!res.ok) return [];
                     return res.json();
