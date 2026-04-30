@@ -1,0 +1,15 @@
+[
+  {
+    "id": "lantern_flare",
+    "name": "Lantern Flare",
+
+    "level": "Cantrip",
+    "school": "Evocation",
+    "casting": "1 action",
+    "range": "60 ft.",
+    "components": "V, S",
+    "duration": "Instantaneous",
+
+    "content": "<p><em>A sudden burst of radiant light erupts from your focus.</em></p><p>A burst of radiant light strikes a target.</p><div class=\"action\"><strong>Effect.</strong> The target takes <strong>1d8 radiant damage</strong>.</div>"
+  }
+]
