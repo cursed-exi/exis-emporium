@@ -6,22 +6,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await loadStatblocks();
 
+    populateFilters();
     renderList(statblocks);
 
-    document.getElementById("search-bar")
-        .addEventListener("input", search);
+    document.getElementById("search-bar").addEventListener("input", filter);
+    document.getElementById("cr").addEventListener("change", filter);
+    document.getElementById("type").addEventListener("change", filter);
+    document.getElementById("size").addEventListener("change", filter);
 });
 
 
-// ===== LOAD (EXPANDED) =====
+// ===== LOAD =====
 
 async function loadStatblocks() {
 
     const files = [
         "yukis_guide_to_sain"
-        // add more files here later
-        // "monster_manual",
-        // "homebrew_pack_1"
     ];
 
     const results = await Promise.all(
@@ -36,17 +36,23 @@ async function loadStatblocks() {
 }
 
 
-// ===== SEARCH =====
+// ===== FILTER =====
 
-function search(e) {
+function filter() {
 
-    const q = e.target.value.toLowerCase();
+    const q = document.getElementById("search-bar").value.toLowerCase();
+    const cr = document.getElementById("cr").value;
+    const type = document.getElementById("type").value;
+    const size = document.getElementById("size").value;
 
-    renderList(statblocks.filter(s =>
-        s.name.toLowerCase().includes(q) ||
-        s.type.toLowerCase().includes(q) ||
-        s.cr.toLowerCase().includes(q)
-    ));
+    let list = statblocks.filter(s =>
+        s.name.toLowerCase().includes(q) &&
+        (cr === "all" || s.cr === cr) &&
+        (type === "all" || s.type === type) &&
+        (size === "all" || s.size === size)
+    );
+
+    renderList(list);
 }
 
 
@@ -142,4 +148,44 @@ function render(s) {
         ` : ""}
 
     </div>`;
+}
+
+
+// ===== FILTER POPULATION =====
+
+function populateFilters() {
+
+    populateSelect("cr", [...new Set(statblocks.map(s => s.cr))], true);
+    populateSelect("type", [...new Set(statblocks.map(s => s.type))]);
+    populateSelect("size", [...new Set(statblocks.map(s => s.size))]);
+}
+
+
+// ===== HELPERS =====
+
+function populateSelect(id, values, isCR = false) {
+
+    const select = document.getElementById(id);
+
+    values.sort((a, b) => {
+        if (isCR) return crToNumber(a) - crToNumber(b);
+        return a.localeCompare(b);
+    });
+
+    values.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        select.appendChild(opt);
+    });
+}
+
+
+// Handles CR like "1/2", "1/4", etc.
+function crToNumber(cr) {
+    if (cr.includes("/")) {
+        const [a, b] = cr.split("/");
+        return a / b;
+    }
+    return Number(cr);
 }
