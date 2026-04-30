@@ -1,0 +1,68 @@
+[
+  {
+    "id": "isk_hound",
+    "name": "ISK Hound",
+    "image": "../img/statblocks/ISK_Hound_sketch.webp",
+
+    "size": "Medium",
+    "type": "Construct",
+    "alignment": "Lawful Evil",
+    "ac": 16,
+    "hp": "88 (8d10+44)",
+    "speed": "45 ft.",
+    "cr": "5",
+
+    "stats": {
+      "STR": 15,
+      "DEX": 19,
+      "CON": 15,
+      "INT": 10,
+      "WIS": 11,
+      "CHA": 10
+    },
+
+    "skills": "Acrobatics +7, Insight +3",
+    "resistances": "Piercing, Slashing",
+
+    "traits": [
+      {
+        "name": "Multiattack",
+        "desc": "The ISK Hound makes 3 attacks: 1 Bite and 2 Swipe."
+      },
+      {
+        "name": "Machine Combat",
+        "desc": "The ISK Hound gives into the orders without thinking. Their attacks are made with advantage, but attacks against them are also made with advantage until the start of their next turn."
+      },
+      {
+        "name": "Aura of the Absolute",
+        "desc": "All allies within 30 feet that can see and hear the ISK Hound have advantage on Wisdom and Charisma saving throws."
+      }
+    ],
+
+    "actions": [
+      {
+        "name": "Swipe",
+        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 2d6+4 slashing damage."
+      },
+      {
+        "name": "Bite",
+        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 1d8+4 slashing damage and 1d8 radiant damage."
+      },
+      {
+        "name": "Laser Cannon (1/day)",
+        "desc": "The ISK Hound fires a 10-foot-wide, 30-foot-long line. Creatures must make a DC 15 Dexterity saving throw or take 2d10 radiant and 2d10 fire damage, half on success."
+      }
+    ],
+
+    "bonus": [
+      {
+        "name": "Chase",
+        "desc": "As a bonus action, the ISK Hound increases its movement by 20 feet until the end of its turn."
+      },
+      {
+        "name": "Tail",
+        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 1d8+4 slashing damage."
+      }
+    ]
+  }
+]
