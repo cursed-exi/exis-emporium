@@ -25,7 +25,7 @@ async function loadArticles() {
 
     const results = await Promise.all(
         years.map(y =>
-            fetch(`../data/articles_${y}.json`)
+            fetch(`../data/${y}.json`)
                 .then(res => {
                     if (!res.ok) return [];
                     return res.json();
