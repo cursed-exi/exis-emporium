@@ -1,0 +1,13 @@
+[
+  {
+    "id": "moonweave_gloves",
+    "name": "Moonweave Gloves",
+    "image": "../img/items/moonweave_gloves.png",
+
+    "type": "Equipment",
+    "rarity": "Unbound",
+    "attunement": "Yes",
+
+    "content": "<p>The holiest gloves left behind by Ikrir the Radiant Moon during her Apotheosis after the fight with the Starbeast.</p><div class=\"action\"><strong>Tier 0.</strong> This item grants truesight equal to 5 times your proficiency bonus while attuned.</div><div class=\"action\"><strong>Tier 1.</strong> After reconnecting it to a place of worship of the goddess, the gloves gain a faint silver glow. You can use Silver Arrow once per long rest.</div><div class=\"action\"><strong>Silver Arrow.</strong> Ranged Spell Attack within 60 ft. On hit: 3d10 fire damage (cannot be reduced) and DC 17 Constitution save or the target is Sluggish (can only take one of: action, bonus action, or movement) until your next turn.</div><div class=\"action\"><strong>Tier 2.</strong> After slaying a being of great darkness, the gloves merge with your hands. Silver Arrow can be used 3 times per long rest, truesight increases to 10× proficiency bonus, and you gain Silver Veil.</div><div class=\"action\"><strong>Silver Veil.</strong> The gloves have 5 charges (regain on long rest). When you heal or grant temp HP, expend charges to add that many d6 to the effect.</div>"
+  }
+]
