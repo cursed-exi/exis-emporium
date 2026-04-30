@@ -13,19 +13,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-// ===== LOAD =====
+// ===== LOAD (EXPANDED) =====
 
-const files = ["yukis_guide_to_sain"];
+async function loadStatblocks() {
 
-const results = await Promise.all(
-    files.map(f =>
-        fetch(`/exis-emporium/data/statblocks/${f}.json`)
-            .then(r => r.ok ? r.json() : [])
-            .catch(() => [])
-    )
-);
+    const files = [
+        "yukis_guide_to_sain"
+        // add more files here later
+        // "monster_manual",
+        // "homebrew_pack_1"
+    ];
 
-statblocks = results.flat();
+    const results = await Promise.all(
+        files.map(f =>
+            fetch(`/exis-emporium/data/statblocks/${f}.json`)
+                .then(res => res.ok ? res.json() : [])
+                .catch(() => [])
+        )
+    );
+
+    statblocks = results.flat();
+}
+
+
 // ===== SEARCH =====
 
 function search(e) {
@@ -46,6 +56,11 @@ function renderList(list) {
 
     const el = document.getElementById("statblock-list");
     el.innerHTML = "";
+
+    if (list.length === 0) {
+        el.innerHTML = "<p>No statblocks found.</p>";
+        return;
+    }
 
     list.forEach(s => {
 
@@ -112,6 +127,18 @@ function render(s) {
         <hr>
         <div class="action"><strong>Bonus Actions</strong></div>
         ${s.bonus.map(b => `<p><strong>${b.name}.</strong> ${b.desc}</p>`).join("")}
+        ` : ""}
+
+        ${s.reactions && s.reactions.length ? `
+        <hr>
+        <div class="action"><strong>Reactions</strong></div>
+        ${s.reactions.map(r => `<p><strong>${r.name}.</strong> ${r.desc}</p>`).join("")}
+        ` : ""}
+
+        ${s.legendary && s.legendary.length ? `
+        <hr>
+        <div class="action"><strong>Legendary Actions</strong></div>
+        ${s.legendary.map(l => `<p><strong>${l.name}.</strong> ${l.desc}</p>`).join("")}
         ` : ""}
 
     </div>`;
