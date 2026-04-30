@@ -1,34 +1,47 @@
-const spells = [
-{
-    id: "lantern_flare",
-    name: "Lantern Flare",
+let spells = [];
 
-    level: "Cantrip",
-    school: "Evocation",
-    casting: "1 action",
-    range: "60 ft.",
-    components: "V, S",
-    duration: "Instantaneous",
+// ===== INIT =====
 
-    content: `
-        <p><em>A sudden burst of radiant light erupts from your focus.</em></p>
+document.addEventListener("DOMContentLoaded", async () => {
 
-        <p>A burst of radiant light strikes a target.</p>
+    await loadSpells();
 
-        <div class="action">
-            <strong>Effect.</strong> The target takes <strong>1d8 radiant damage</strong>.
-        </div>
-    `
-}
-];
-
-document.addEventListener("DOMContentLoaded", () => {
     renderList(spells);
-    document.getElementById("search-bar").addEventListener("input", search);
+
+    document.getElementById("search-bar")
+        .addEventListener("input", search);
 });
 
+
+// ===== LOAD (EXPANDED) =====
+
+async function loadSpells() {
+
+    const files = [
+        "yukis_guide_to_sain"
+        // add more later:
+        // "core_spells",
+        // "dark_magic_pack"
+    ];
+
+    const results = await Promise.all(
+        files.map(f =>
+            fetch(`/exis-emporium/data/spells/${f}.json`)
+                .then(res => res.ok ? res.json() : [])
+                .catch(() => [])
+        )
+    );
+
+    spells = results.flat();
+}
+
+
+// ===== SEARCH =====
+
 function search(e) {
+
     const q = e.target.value.toLowerCase();
+
     renderList(spells.filter(s =>
         s.name.toLowerCase().includes(q) ||
         s.school.toLowerCase().includes(q) ||
@@ -36,23 +49,40 @@ function search(e) {
     ));
 }
 
+
+// ===== LIST =====
+
 function renderList(list) {
+
     const el = document.getElementById("spell-list");
     el.innerHTML = "";
 
+    if (list.length === 0) {
+        el.innerHTML = "<p>No spells found.</p>";
+        return;
+    }
+
     list.forEach(s => {
+
         const item = document.createElement("div");
         item.className = "note-box";
+
         item.innerHTML = `
             <strong>${s.name}</strong><br>
             <span style="color:#aaa;">${s.level} ${s.school}</span>
         `;
+
         item.onclick = () => render(s);
+
         el.appendChild(item);
     });
 }
 
+
+// ===== DISPLAY =====
+
 function render(s) {
+
     document.getElementById("spell-display").innerHTML = `
     <div class="statblock">
 
