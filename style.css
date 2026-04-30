@@ -93,6 +93,11 @@ button:hover {
     display: none;
 }
 
+strong {
+    color: #f2d999;   /* brighter amber */
+    font-weight: 700;
+}
+
 /* ===== Sidebar ===== */
 
 aside h3 {
