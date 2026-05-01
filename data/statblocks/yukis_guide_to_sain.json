@@ -114,10 +114,20 @@
       {
         "name": "The Marking (Recharge 6 each)",
         "desc": "As a bonus action Earl Makrevikk may use one of 4 marks, each having different effects: <ul><li>Mark of the Bold - The creature within 30 feet of Earl Makrevikk receives the mark, that allows them to attack a creature one additional time, when they attack a creature.</li><li>Mark of the Shield - The creature receives a mark, that gives them +2 AC for the next minute.</li><li>Mark of the Flame - The target is marked with a mark of the flame, that makes their attack deal additional 2d8 fire damage until the end of the Earl next round.</li><li>Mark of the Wind - Target creatures gains additional 10 feet of walk speed for the next minute.</li></ul>"
+      }
+    ],
+    "legendary": [
+      {
+        "name": "Attack (1 Break Point)",
+        "desc": "Earl Makrevikk makes an attack against a creature within range."
       },
       {
-        "name": "Tail",
-        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 1d8+4 slashing damage."
+        "name": "Move (1 Break Point)",
+        "desc": "Earl Makrevikk moves up to half of his speed."
+      },
+      {
+        "name": "Dreadmaw (6 Break Points)",
+        "desc": "Earl summons a beast from the Ghostsea to devour his opponents. Each creature within 20 feet of him must make a DC17 Dexterity Saving Throw or take 3d10 necrotic damage and become Sluggish until the end of their next turn. As a maw emerges from the ground covering these unlucky enough not to dodge that in the water flames of the Ghostsea."
       }
     ]
   }
