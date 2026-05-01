@@ -64,5 +64,73 @@
         "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 1d8+4 slashing damage."
       }
     ]
+  },
+   {
+    "id": "earl_makrevikk",
+    "name": "Earl Makrevikk",
+    "image": "/exis-emporium/img/makrevikk_no_bg.png",
+
+    "size": "Medium",
+    "type": "Humanoid and Spirit",
+    "alignment": "Chaotic Evil",
+    "ac": 18,
+    "hp": "181 (20d8+91)",
+    "speed": "35 ft.",
+    "cr": "7",
+
+    "stats": {
+      "STR": 12,
+      "DEX": 18,
+      "CON": 16,
+      "INT": 15,
+      "WIS": 10,
+      "CHA": 20
+    },
+
+    "skills": "Acrobatics +7,Deception +8, Insight +3",
+    "resistances": "necrotic, bludgeoning, piercing and shlashing from non-magical sources",
+    "languages": "Common, High Common",
+    "senses": "darkvision 60 ft., passive Perception 10",
+
+    "traits": [
+      {
+        "name": "Multiattack",
+        "desc": "The ISK Hound makes 3 attacks: 1 Bite and 2 Swipe."
+      },
+      {
+        "name": "Machine Combat",
+        "desc": "The ISK Hound gives into the orders without thinking. Their attacks are made with advantage, but attacks against them are also made with advantage until the start of their next turn."
+      },
+      {
+        "name": "Aura of the Absolute",
+        "desc": "All allies within 30 feet that can see and hear the ISK Hound have advantage on Wisdom and Charisma saving throws."
+      }
+    ],
+
+    "actions": [
+      {
+        "name": "Swipe",
+        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 2d6+4 slashing damage."
+      },
+      {
+        "name": "Bite",
+        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 1d8+4 slashing damage and 1d8 radiant damage."
+      },
+      {
+        "name": "Laser Cannon (1/day)",
+        "desc": "The ISK Hound fires a 10-foot-wide, 30-foot-long line. Creatures must make a DC 15 Dexterity saving throw or take 2d10 radiant and 2d10 fire damage, half on success."
+      }
+    ],
+
+    "bonus": [
+      {
+        "name": "Chase",
+        "desc": "As a bonus action, the ISK Hound increases its movement by 20 feet until the end of its turn."
+      },
+      {
+        "name": "Tail",
+        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 1d8+4 slashing damage."
+      }
+    ]
   }
 ]
