@@ -111,6 +111,7 @@ function render(s) {
         ${s.resistances ? `<p><strong>Resistances</strong> ${s.resistances}</p>` : ""}
         ${s.immunities ? `<p><strong>Immunities</strong> ${s.immunities}</p>` : ""}
         ${s.languages ? `<p><strong>Languages</strong> ${s.languages}</p>` : ""}
+        ${s.senses ? `<p><strong>Senses</strong> ${s.senses}</p>` : ""}
 
         <hr>
 
