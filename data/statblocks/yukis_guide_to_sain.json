@@ -65,7 +65,7 @@
       }
     ]
   },
-   {
+  {
     "id": "earl_makrevikk",
     "name": "Earl Makrevikk",
     "image": "/exis-emporium/img/makrevikk_no_bg.png",
@@ -95,30 +95,18 @@
     "traits": [
       {
         "name": "Multiattack",
-        "desc": "The ISK Hound makes 3 attacks: 1 Bite and 2 Swipe."
+        "desc": "Earl makes three attacks as a part of an attack action, only one of which can be the Domain of the Damned. "
       },
       {
-        "name": "Machine Combat",
-        "desc": "The ISK Hound gives into the orders without thinking. Their attacks are made with advantage, but attacks against them are also made with advantage until the start of their next turn."
-      },
-      {
-        "name": "Aura of the Absolute",
-        "desc": "All allies within 30 feet that can see and hear the ISK Hound have advantage on Wisdom and Charisma saving throws."
+        "name": "The Song of the Sea",
+        "desc": "Earl is cursed by the powers of the Ghostsea and siphons a part of its power into himself. He starts combat with 3 Legendary Break Points and gains 2 at the start of each of his rounds.<br><br>When he is at 5 points or above his whip and eyes burn with a purple-bluish flame and his gaze and smile become feral.<br><br>He can spend them as normal Legendary Break Points or use a Dreadmaw for the cost of 6 Legendary                    Break Points. "
       }
     ],
 
     "actions": [
       {
-        "name": "Swipe",
-        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 2d6+4 slashing damage."
-      },
-      {
-        "name": "Bite",
-        "desc": "Melee Weapon Attack; +7 to hit; reach 5 ft.; one target; 1d8+4 slashing damage and 1d8 radiant damage."
-      },
-      {
-        "name": "Laser Cannon (1/day)",
-        "desc": "The ISK Hound fires a 10-foot-wide, 30-foot-long line. Creatures must make a DC 15 Dexterity saving throw or take 2d10 radiant and 2d10 fire damage, half on success."
+        "name": "The Vein",
+        "desc": "<p>Melee weapon attack: +7 to hit, reach 20ft., one target, 1d4+4 slashing and 1d4 necrotic.<br><br>This vein looking whip has a devastating effect upon its victims, who can be seen having their flesh falling    off and necrosis overtake them - it deals an additional 1d4 of necrotic damage and its range is doubled. When attuned it can be stowed away in user's body mimicking a normal vein. In this state it cannot be                    found by a spell of 5th level or lower.</p>"
       }
     ],
 
