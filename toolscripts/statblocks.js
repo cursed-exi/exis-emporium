@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadStatblocks();
 
     populateFilters();
-    renderList(statblocks);
+    renderList(sortByName(statblocks));
 
     document.getElementById("search-bar").addEventListener("input", filter);
     document.getElementById("cr").addEventListener("change", filter);
@@ -36,6 +36,13 @@ async function loadStatblocks() {
 }
 
 
+// ===== SORT =====
+
+function sortByName(list) {
+    return [...list].sort((a, b) => a.name.localeCompare(b.name));
+}
+
+
 // ===== FILTER =====
 
 function filter() {
@@ -52,7 +59,7 @@ function filter() {
         (size === "all" || s.size === size)
     );
 
-    renderList(list);
+    renderList(sortByName(list));
 }
 
 
