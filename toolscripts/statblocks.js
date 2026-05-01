@@ -52,6 +52,9 @@ function filter() {
         (size === "all" || s.size === size)
     );
 
+    // sort
+    list.sort((a, b) => a.name.localeCompare(b.name));
+
     renderList(list);
 }
 
