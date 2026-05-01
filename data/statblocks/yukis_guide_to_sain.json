@@ -112,8 +112,8 @@
 
     "bonus": [
       {
-        "name": "Chase",
-        "desc": "As a bonus action, the ISK Hound increases its movement by 20 feet until the end of its turn."
+        "name": "The Marking (Recharge 6 each)",
+        "desc": "As a bonus action Earl Makrevikk may use one of 4 marks, each having different effects: <ul><li>Mark of the Bold - The creature within 30 feet of Earl Makrevikk receives the mark, that allows them to attack a creature one additional time, when they attack a creature.</li><li>Mark of the Shield - The creature receives a mark, that gives them +2 AC for the next minute.</li><li>Mark of the Flame - The target is marked with a mark of the flame, that makes their attack deal additional 2d8 fire damage until the end of the Earl next round.</li><li>Mark of the Wind - Target creatures gains additional 10 feet of walk speed for the next minute.</li></ul>"
       },
       {
         "name": "Tail",
