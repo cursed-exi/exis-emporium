@@ -143,7 +143,7 @@ function render(s) {
 
         ${s.legendary && s.legendary.length ? `
         <hr>
-        <div class="action"><strong>Legendary Actions</strong></div>
+        <div class="action"><strong>Legendary Break Actions</strong></div>
         ${s.legendary.map(l => `<p><strong>${l.name}.</strong> ${l.desc}</p>`).join("")}
         ` : ""}
 
