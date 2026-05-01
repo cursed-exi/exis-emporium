@@ -106,7 +106,7 @@
     "actions": [
       {
         "name": "The Vein",
-        "desc": "<p>Melee weapon attack: +7 to hit, reach 20ft., one target, 1d4+4 slashing and 1d4 necrotic.</p><p>This vein looking whip has a devastating effect upon its victims, who can be seen having their flesh falling    off and necrosis overtake them - it deals an additional 1d4 of necrotic damage and its range is doubled. When attuned it can be stowed away in user's body mimicking a normal vein. In this state it cannot be                    found by a spell of 5th level or lower.</p>"
+        "desc": "Melee weapon attack: +7 to hit, reach 20ft., one target, 1d4+4 slashing and 1d4 necrotic.<p>This vein looking whip has a devastating effect upon its victims, who can be seen having their flesh falling    off and necrosis overtake them - it deals an additional 1d4 of necrotic damage and its range is doubled. When attuned it can be stowed away in user's body mimicking a normal vein. In this state it cannot be                    found by a spell of 5th level or lower.</p>"
       }
     ],
 
