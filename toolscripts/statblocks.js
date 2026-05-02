@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function loadStatblocks() {
 
     const files = [
-        "yukis_guide_to_sain"
+        "yukis_guide_to_sain",
+        "sain_age_of_the_machines"
     ];
 
     const results = await Promise.all(
