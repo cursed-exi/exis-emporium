@@ -342,6 +342,12 @@ img {
     margin-top: 8px;
 }
 
+.map .caption {
+    font-size: 12px;
+    color: #888;
+    margin-top: 8px;
+}
+
 /* ===== Tables ===== */
 
 table {
