@@ -687,3 +687,50 @@ tr:hover {
     color: #888;
     pointer-events: none;
 }
+
+/* cr calc */
+.cr-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;
+}
+
+.cr-result{
+font-size:48px;
+font-weight:bold;
+color:#f2d999;
+}
+
+.trait-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:10px;
+margin:20px 0;
+}
+
+.trait-tile{
+border:1px solid #555;
+background:#0a0a0a;
+padding:12px;
+cursor:pointer;
+transition:0.2s;
+user-select:none;
+}
+
+.trait-tile:hover{
+border-color:#a8843a;
+background:#141414;
+}
+
+.trait-tile.active{
+border-color:#d4b46a;
+box-shadow:0 0 8px rgba(212,180,106,0.25);
+background:#17130c;
+}
+
+.trait-value{
+color:#f2d999;
+font-size:12px;
+display:block;
+margin-top:4px;
+}
