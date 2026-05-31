@@ -30,6 +30,8 @@ const TRAITS = [
 ["Legendary Resistance",1],
 ["Lair Actions",1],
 ["Spellcasting",1],
+["Multiattack",0.5],
+["Pack Tactics",0.5],
 ["AoE Damage",1],
 ["Battlefield Control",0.5],
 ["Damage Resistance",0.5],
