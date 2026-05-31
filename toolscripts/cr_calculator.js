@@ -131,3 +131,30 @@ tbody.innerHTML+=`
 });
 
 calculateCR();
+
+/* ===== CUSTOM SPINNERS ===== */
+
+document.querySelectorAll(".cr-spin")
+.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+const input=
+document.getElementById(
+button.dataset.target
+);
+
+const amount=
+button.classList.contains("up")
+? 1
+: -1;
+
+input.value=
+Math.max(
+0,
+Number(input.value)+amount
+);
+
+calculateCR();
+});
+});
