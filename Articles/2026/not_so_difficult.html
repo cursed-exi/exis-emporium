@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Not So Difficult</title>
+<link rel="icon" href="/exis-emporium/img/emporium_icon.webp" type="image/webp">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Go up two levels to reach root -->
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<header>
+    <h1><a href="../../index.html">Exi's Emporium</a></h1>
+    <p>The Land of the Paper Lantern Sage</p>
+</header>
+
+<div class="container">
+<main>
+
+<article class="post">
+
+<h2>Not So difficult</h2>
+<div class="meta">Posted on June 3, 2026 | Mechanics Discussion</div>
+
+<p>
+The idea of challenge rating is a great one in my opinion, but the execution of it, that we have in DnD 5e leaves a lot to be desired. Like many people before me I tweaked it over the years, to suit my needs and now, after a long time it finally does its job, but only after a lot of trial and error.
+</p>
+
+<p>
+If you’ve been following me for a while then now you’ll see the math behind my campaign encounters, which are more on a deadly side with my players using strong character options provided by DnD 5.19 delivered by Nat19 alongside my house rules, that can be found in a LFG blogpost that I’ve published here.
+</p>
+
+<h3>Specifics</h3>
+
+<p>
+Balancing encounters in TTRPGs (not only combat ones) is art, so even if after reading this article you don’t feel confident about your skills, it’s normal. My method may not work at your table, but could be just a starting point for you discovering the way that suits your needs. Treat this article more as an insight into my process than a recipe for success.
+</p>
+
+<h3>Background</h3>
+
+<p>
+When I started, I was using exclusively premade statblocks, be they official or 3rd party, I did not feel confident at all, so I was deciding to stick to my comfort zone, but I always had the nagging feeling that it was inhibiting my growth and enjoyment of the hobby. I started trying to do something about this, so I reached out for my copy of Dungeon Master’s Guide and started reading upon monster creation rules, which seemed simple enough, so I’ve got to work. Despite that the statblocks felt off – they were widely mismatched to my party using only official materials. This has discouraged me and made me feel like a bad GM, so I’ve stuck with the premade ones.
+</p>
+
+<p>
+Later I’ve got caught up in some discourse, learning that it is not end all be all and that the CR is wildly unbalanced by itself, so I started tinkering and trying to create something that would work. It took many failed attempts and a few angry players, but after some time I’ve found the method that worked for me and it was quite simple – I’ve codified it into the table that you can find here:
+</p>
+
+<table>
+    <tr>
+      <th>CR</th>
+      <th>HP</th>
+      <th>AC</th>
+      <th>Attack</th>
+      <th>Save DC</th>
+      <th>DPR</th>
+    </tr>
+    <tr><td>0</td><td>1–10</td><td>11</td><td>+2</td><td>10</td><td>0–4</td></tr>
+    <tr><td>1/8</td><td>7–35</td><td>12</td><td>+3</td><td>11</td><td>4–7</td></tr>
+    <tr><td>1/4</td><td>11–40</td><td>12</td><td>+3</td><td>11</td><td>5–9</td></tr>
+    <tr><td>1/2</td><td>16–50</td><td>13</td><td>+3</td><td>12</td><td>7–12</td></tr>
+    <tr><td>1</td><td>30–70</td><td>14</td><td>+4</td><td>13</td><td>12–17</td></tr>
+    <tr><td>2</td><td>40–90</td><td>14</td><td>+5</td><td>13</td><td>17–26</td></tr>
+    <tr><td>3</td><td>50–110</td><td>15</td><td>+5</td><td>14</td><td>26–34</td></tr>
+    <tr><td>4</td><td>60–130</td><td>15</td><td>+6</td><td>14</td><td>34–43</td></tr>
+    <tr><td>5</td><td>80–150</td><td>16</td><td>+6</td><td>15</td><td>43–55</td></tr>
+    <tr><td>6</td><td>100–180</td><td>16</td><td>+7</td><td>15</td><td>55–68</td></tr>
+    <tr><td>7</td><td>120–200</td><td>17</td><td>+8</td><td>16</td><td>68–81</td></tr>
+    <tr><td>8</td><td>140–220</td><td>17</td><td>+8</td><td>16</td><td>81–94</td></tr>
+    <tr><td>9</td><td>160–250</td><td>17</td><td>+9</td><td>17</td><td>94–111</td></tr>
+    <tr><td>10</td><td>180–270</td><td>17</td><td>+9</td><td>17</td><td>111–128</td></tr>
+    <tr><td>11</td><td>200–300</td><td>18</td><td>+10</td><td>18</td><td>128–145</td></tr>
+    <tr><td>12</td><td>220–330</td><td>18</td><td>+10</td><td>18</td><td>145–170</td></tr>
+    <tr><td>13</td><td>250–350</td><td>19</td><td>+11</td><td>19</td><td>170–187</td></tr>
+    <tr><td>14</td><td>270–380</td><td>19</td><td>+11</td><td>19</td><td>187–213</td></tr>
+    <tr><td>15</td><td>300–400</td><td>19</td><td>+12</td><td>20</td><td>213–238</td></tr>
+    <tr><td>16</td><td>330–450</td><td>19</td><td>+12</td><td>20</td><td>238–272</td></tr>
+    <tr><td>17</td><td>350–500</td><td>20</td><td>+13</td><td>21</td><td>272–298</td></tr>
+    <tr><td>18</td><td>400–550</td><td>20</td><td>+13</td><td>21</td><td>298–340</td></tr>
+    <tr><td>19</td><td>450–600</td><td>20</td><td>+14</td><td>22</td><td>340–383</td></tr>
+    <tr><td>20</td><td>500–700</td><td>20</td><td>+14</td><td>22</td><td>383–425</td></tr>
+</table>
+  
+<p>
+Keep in mind that it is for my high powered game, so if you’d like to use it you can try kicking the statblocks down a notch: if you want a CR4, use a CR3, if you are running a normal DnD game and adjust as you go. This method works for me and both me and my players have been enjoying the combats much more, ever since I’ve been using this formulas.
+</p>
+
+<p>Now 90+% of the monsters in my game are made by me, so my players are always encountering something fresh and interesting. Sometimes novelty is the thing lacking in your encounters and adding 3-4 new monsters per arc can really increase enjoyment of both you and your players.</p>
+
+<h3>Closing Thoughts</h3>
+
+<p>
+Despite all its flaws, I think that the CR is generally a good system, that comes from a right place, but because they were creating something new it didn’t hit the mark and was left in that way for a long time. Also we as a community got better at both balancing and playing, so it added fuel to the fire.
+</p>
+
+<p>
+It is important to keep in mind that the balance in TTRPGs is not as important as in video games, because players here have much more choice of how they approach encounters – there are literally as much possibilities, as you as a GM allow. Not all combats should be difficult and not all should be winnable – there are some fights where just surviving is good enough.
+</p>
+
+<p>
+Finishing, if you want to try making a monster with this formula, alongside also accounting for some traits it can have, you can hear to the CR calculator, you can find in the sidebar, tools section. It will calculate both offensive and defensive CR of your creatures as you go.
+</p>
+
+<div class="license-box">
+
+<strong>License</strong>
+
+<p>
+Portions of this material reference the 
+<a href="https://www.dndbeyond.com/attachments/39j2li89/SRD5.1-CCBY4.0License.pdf">
+D&D 5e System Reference Document
+</a>by Wizards of the Coast LLC.
+</p>
+
+<p>
+The SRD is licensed under the
+<a href="https://creativecommons.org/licenses/by/4.0/">
+Creative Commons Attribution 4.0 International License
+</a>.
+</p>
+
+<p>
+Original text on this page is © 2026 Exi's Emporium.
+</p>
+
+</div>
+
+</article>
+
+</main>
+
+<aside id="sidebar"></aside>
+	
+
+
+</div>
+
+<footer>
+    <p>Exi's Emporiums © 2026 | ExiFlow</p>
+</footer>
+
+<!-- Go up two levels to reach root -->
+<script src="../../script.js"></script>
+</body>
+</html>
