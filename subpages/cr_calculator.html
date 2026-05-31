@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Monster CR Calculator | Exi's Emporium</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <h1><a href="../index.html">Exi's Emporium</a></h1>
+    <p>The Land of the Paper Lantern Sage</p>
+</header>
+
+<div class="container">
+
+<main>
+
+<article class="post">
+
+<h2>Monster CR Calculator</h2>
+<p class="meta">A quick balancing utility for dungeon masters</p>
+
+<div class="note-box">
+
+<div class="cr-grid">
+
+<div>
+<label>HP</label>
+<input class="ui-input cr-input" id="hp" type="number" value="120">
+</div>
+
+<div>
+<label>Armor Class</label>
+<input class="ui-input cr-input" id="ac" type="number" value="16">
+</div>
+
+<div>
+<label>Attack Bonus</label>
+<input class="ui-input cr-input" id="attackBonus" type="number" value="7">
+</div>
+
+<div>
+<label>Save DC</label>
+<input class="ui-input cr-input" id="saveDc" type="number" value="15">
+</div>
+
+<div>
+<label>Damage / Round</label>
+<input class="ui-input cr-input" id="dpr" type="number" value="55">
+</div>
+
+</div>
+
+</div>
+
+<div class="stat-box">
+
+<h3>Estimated Challenge Rating</h3>
+
+<div id="cr-result" class="cr-result">
+6
+</div>
+
+<p>
+Raw Estimate:
+<strong id="raw-cr">6.0</strong>
+</p>
+
+<hr>
+
+<p><strong>Defensive CR:</strong> <span id="defensive-cr">6</span></p>
+<p><strong>Offensive CR:</strong> <span id="offensive-cr">6</span></p>
+
+<p>
+<strong>Trait Modifier:</strong>
+<span id="trait-total">+0</span>
+</p>
+
+</div>
+
+<h3>Monster Traits</h3>
+
+<div class="trait-grid" id="trait-grid"></div>
+
+<div class="note-box">
+
+<h3>Guidance</h3>
+
+<ul>
+<li>Use average damage over roughly 3 rounds.</li>
+<li>Legendary Actions strongly increase CR.</li>
+<li>Only count meaningful survivability traits.</li>
+<li>Mobility matters more on ranged monsters.</li>
+<li>Boss monsters generally score 1–2 CR higher than expected.</li>
+</ul>
+
+</div>
+
+<h3>Reference Table</h3>
+
+<table id="cr-table">
+<thead>
+<tr>
+<th>CR</th>
+<th>HP</th>
+<th>AC</th>
+<th>Attack</th>
+<th>Save DC</th>
+<th>DPR</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+</article>
+
+</main>
+
+<aside id="sidebar"></aside>
+
+</div>
+
+<footer>
+<p>Exi's Emporium © 2026 | ExiFlow</p>
+</footer>
+
+<script src="../toolscripts/cr_calculator.js"></script>
+<script src="../script.js"></script>
+
+</body>
+</html>
