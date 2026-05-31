@@ -734,3 +734,107 @@ font-size:12px;
 display:block;
 margin-top:4px;
 }
+
+/* ===== CR CUSTOM SPINNER ===== */
+
+.cr-number-wrap{
+position:relative;
+width:100%;
+}
+
+.cr-input{
+width:100%;
+padding-right:34px !important;
+}
+
+/* remove ugly browser arrows */
+.cr-input::-webkit-inner-spin-button,
+.cr-input::-webkit-outer-spin-button{
+appearance:none;
+margin:0;
+}
+
+.cr-input[type="number"]{
+-moz-appearance:textfield;
+appearance:textfield;
+}
+
+.cr-spinner{
+position:absolute;
+top:1px;
+right:1px;
+bottom:1px;
+
+width:30px;
+
+display:flex;
+flex-direction:column;
+
+border-left:1px solid #444;
+
+background:
+linear-gradient(
+to bottom,
+#111,
+#0b0b0b
+);
+}
+
+/* top + bottom buttons */
+.cr-spin{
+flex:1;
+
+border:none;
+padding:0;
+
+font-family:inherit;
+font-size:9px;
+
+cursor:pointer;
+
+color:#b99a57;
+
+background:
+linear-gradient(
+to bottom,
+#1a1a1a,
+#111
+);
+
+transition:
+background .15s ease,
+color .15s ease,
+box-shadow .15s ease;
+}
+
+/* divider */
+.cr-spin.up{
+border-bottom:1px solid #333;
+}
+
+/* hover */
+.cr-spin:hover{
+background:
+linear-gradient(
+to bottom,
+#222,
+#171717
+);
+
+color:#f2d999;
+}
+
+/* pressed */
+.cr-spin:active{
+background:#0d0d0d;
+}
+
+/* active input = warm amber frame */
+.cr-number-wrap:focus-within
+.cr-spinner{
+border-left-color:#a8843a;
+
+box-shadow:
+inset 1px 0 0
+rgba(212,180,106,.15);
+}
