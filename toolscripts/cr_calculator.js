@@ -88,10 +88,20 @@ const dprRow=nearestRow(dpr,"dpr");
 
 let defensive=hpRow.value+((ac-hpRow.ac)/2);
 
-let offensive=dprRow.value;
-offensive+=(ab-dprRow.ab)/2;
-offensive+=(dc-dprRow.dc)/2;
-offensive/=2;
+let offensive = dprRow.value;
+
+// Use the better of attack bonus or save DC,
+// not both simultaneously.
+const attackAdjustment =
+  (ab - dprRow.ab) / 2;
+
+const saveAdjustment =
+  (dc - dprRow.dc) / 2;
+
+offensive += Math.max(
+  attackAdjustment,
+  saveAdjustment
+);
 
 selectedTraits=0;
 
