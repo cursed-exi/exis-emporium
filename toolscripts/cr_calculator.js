@@ -26,8 +26,7 @@ const CR_ROWS = [
 ];
 
 const TRAITS = [
-["Legendary Actions",2],
-["Legendary Resistance",1],
+["Legendary Break",1.5],
 ["Lair Actions",1],
 ["Spellcasting",1],
 ["Multiattack",0.5],
