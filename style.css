@@ -841,28 +841,46 @@ rgba(212,180,106,.15);
 
 
 
-/*dice calc*/
-.dice-box{
-margin:20px 0;
-}
+/* ===== Dice Calculator ===== */
 
 .dice-grid{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:12px;
-align-items:end;
+gap:18px;
+align-items:stretch;
+}
+
+.dice-input-group{
+display:flex;
+flex-direction:column;
+justify-content:center; /* vertical centering */
+}
+
+.dice-input-group input{
+margin:8px 0;
+}
+
+.dice-help{
+font-size:12px;
+color:#888;
+margin:0;
 }
 
 .dice-result{
+height:58px;
+
+display:flex;
+align-items:center;
+
+padding:0 14px;
+
 font-size:32px;
 font-weight:bold;
 color:#f2d999;
-padding:8px 10px;
+
 border:1px solid #555;
 background:#0a0a0a;
-min-height:42px;
-display:flex;
-align-items:center;
+box-sizing:border-box;
 }
 
 @media(max-width:700px){
