@@ -168,3 +168,69 @@ Number(input.value)+amount
 calculateCR();
 });
 });
+
+
+/*Dice Calc*/
+function calculateDiceAverage(){
+
+const formula=document
+.getElementById("diceFormula")
+.value
+.toLowerCase()
+.replace(/\s+/g,"");
+
+if(!formula){
+document.getElementById("dice-average")
+.textContent="0";
+return;
+}
+
+let total=0;
+
+const parts=formula.match(/[+-]?[^+-]+/g) || [];
+
+for(const part of parts){
+
+const cleaned=part.trim();
+
+if(cleaned.includes("d")){
+
+const match=cleaned.match(
+/([+-]?\d*)d(\d+)/
+);
+
+if(match){
+
+let count=parseInt(match[1]);
+
+if(isNaN(count)){
+count=1;
+}
+
+if(cleaned.startsWith("-") && count>0){
+count*=-1;
+}
+
+const sides=parseInt(match[2]);
+
+total += count * ((sides + 1) / 2);
+}
+
+}else{
+
+total += Number(cleaned) || 0;
+}
+}
+
+document.getElementById("dice-average")
+.textContent=total.toFixed(1);
+}
+
+document
+.getElementById("diceFormula")
+.addEventListener(
+"input",
+calculateDiceAverage
+);
+
+calculateDiceAverage();
