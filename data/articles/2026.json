@@ -1,10 +1,18 @@
 [
-     {
+    {
+    "id": "mortal_limits",
+    "title": "Mortal Limits",
+    "date": "2026-06-17",
+    "category": "Mechanics Discussion",
+    "description": "An article about changing the way progression work with my take on that change in 5e.",
+    "link": "../Articles/2026/mortal_limits.html"
+    },
+    {
     "id": "diegetic_interactions",
     "title": "Diegetic Interactions",
     "date": "2026-06-10",
     "category": "Worldbuilding",
-    "description": "An article about how I ground my playets in my settings and how you could do the same",
+    "description": "An article about how I ground my playets in my settings and how you could do the same.",
     "link": "../Articles/2026/diegetic_interactions.html"
     },
     {
