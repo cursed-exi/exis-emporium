@@ -13,7 +13,7 @@
   {
     "id": "black_manuscript_t0",
     "name": "Black Manuscript (T0)",
-    "image": "../img/items/black_manuscript.png",
+    "image": "../img/items/black_manuscript.webp",
 
     "type": "Weapon",
     "rarity": "Unbound",
