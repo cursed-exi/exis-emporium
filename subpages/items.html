@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>The Realm of Treasure</title>
+<link rel="icon" href="/exis-emporium/img/emporium_icon.webp" type="image/webp">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style.css">
 </head>
@@ -21,7 +22,7 @@
 <article class="post">
 
 <h2>The Realm of Treasure</h2>
-<div class="meta">All the treasures of mine awaiting to be discovered...</div>
+<div class="meta">All the treasures of mine awating to be discovered.</div>
 
 <div class="license-box">
 
@@ -48,9 +49,15 @@ Original text on this page is © 2026 Exi's Emporium.
 
 </div>
 
+<!-- DISPLAY -->
+<div id="item-display">
+    Select an item to inspect it.
+</div>
+
+<hr>
+
 <!-- FILTERS -->
 <div class="note-box">
-
     <input class="ui-input" id="search-bar" type="text" placeholder="Search items...">
 
     <br><br>
@@ -61,21 +68,18 @@ Original text on this page is © 2026 Exi's Emporium.
         </select>
     </div>
 
-    <div class="ui-select-wrapper">
-        <select class="ui-select" id="sort">
-            <option value="name">Name</option>
-            <option value="rarity">Rarity</option>
+    <div class="ui-select-wrapper" id="subtype-wrap" style="display:none;">
+        <select class="ui-select" id="subtype">
+            <option value="all">All Subtypes</option>
         </select>
     </div>
 
+    <div class="ui-select-wrapper">
+        <select class="ui-select" id="rarity">
+            <option value="all">All Rarities</option>
+        </select>
+    </div>
 </div>
-
-<!-- DISPLAY -->
-<div id="item-display">
-    Select an item to inspect it.
-</div>
-
-<hr>
 
 <!-- LIST -->
 <div id="item-list"></div>
