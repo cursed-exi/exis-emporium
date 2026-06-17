@@ -9,9 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderList(items);
     showItem(items[0] || null);
 
-    document.getElementById("search-bar").addEventListener("input", filter);
-    document.getElementById("type").addEventListener("change", filter);
-    document.getElementById("sort").addEventListener("change", filter);
+    const searchBar = document.getElementById("search-bar");
+    const typeSelect = document.getElementById("type");
+    const sortSelect = document.getElementById("sort");
+
+    if (searchBar) searchBar.addEventListener("input", filter);
+    if (typeSelect) typeSelect.addEventListener("change", filter);
+    if (sortSelect) sortSelect.addEventListener("change", filter);
 });
 
 // ===== LOAD ITEMS =====
@@ -36,13 +40,17 @@ async function loadItems() {
 // ===== FILTER =====
 
 function filter() {
-    const q = document.getElementById("search-bar").value.toLowerCase();
-    const type = document.getElementById("type").value;
-    const sort = document.getElementById("sort").value;
+    const searchBar = document.getElementById("search-bar");
+    const typeSelect = document.getElementById("type");
+    const sortSelect = document.getElementById("sort");
 
-    let list = items.filter(i => {
-        const name = getName(i).toLowerCase();
-        const itemType = getType(i);
+    const q = searchBar ? searchBar.value.toLowerCase().trim() : "";
+    const type = typeSelect ? typeSelect.value : "all";
+    const sort = sortSelect ? sortSelect.value : "name";
+
+    let list = items.filter(item => {
+        const name = getName(item).toLowerCase();
+        const itemType = getType(item);
 
         return (
             name.includes(q) &&
@@ -57,15 +65,15 @@ function filter() {
     }
 
     renderList(list);
-
-    const current = list[0] || null;
-    showItem(current);
+    showItem(list[0] || null);
 }
 
 // ===== RENDER LIST =====
 
 function renderList(list) {
     const el = document.getElementById("item-list");
+    if (!el) return;
+
     el.innerHTML = "";
 
     if (list.length === 0) {
@@ -98,6 +106,7 @@ function renderList(list) {
 
 function showItem(item) {
     const el = document.getElementById("item-display");
+    if (!el) return;
 
     if (!item) {
         el.innerHTML = "Select an item to inspect it.";
@@ -107,15 +116,18 @@ function showItem(item) {
     const name = getName(item);
     const type = getType(item);
     const rarity = getRarity(item);
-    const description = getDescription(item);
+    const attunement = getAttunement(item);
+    const content = getContent(item);
+    const image = item.image || "";
     const link = item.link || item.url || "";
 
     el.innerHTML = `
         <div class="statblock">
             <h4>${escapeHTML(name)}</h4>
-            <div class="type">${escapeHTML(type)} • ${escapeHTML(rarity)}</div>
+            <div class="type">${escapeHTML(type)} • ${escapeHTML(rarity)} • Attunement: ${escapeHTML(attunement)}</div>
             <hr>
-            <div class="ability">${escapeHTML(description)}</div>
+            ${image ? `<div class="image"><img src="${escapeAttr(image)}" alt="${escapeAttr(name)}"></div>` : ""}
+            <div class="ability">${content}</div>
             ${
                 link
                     ? `<div class="action"><strong>Details:</strong> <a href="${escapeAttr(link)}">${escapeHTML(link)}</a></div>`
@@ -129,14 +141,17 @@ function showItem(item) {
 
 function populateTypes() {
     const select = document.getElementById("type");
+    if (!select) return;
 
-    const types = [...new Set(items.map(i => getType(i)))].filter(Boolean);
+    select.innerHTML = '<option value="all">All Types</option>';
+
+    const types = [...new Set(items.map(item => getType(item)))].filter(Boolean);
     types.sort((a, b) => a.localeCompare(b));
 
-    types.forEach(t => {
+    types.forEach(type => {
         const opt = document.createElement("option");
-        opt.value = t;
-        opt.textContent = t;
+        opt.value = type;
+        opt.textContent = type;
         select.appendChild(opt);
     });
 }
@@ -146,7 +161,7 @@ function getName(item) {
 }
 
 function getType(item) {
-    return item?.type || item?.category || "Unknown";
+    return item?.type || item?.category || item?.itemType || "Unknown";
 }
 
 function getRarity(item) {
@@ -154,29 +169,41 @@ function getRarity(item) {
 }
 
 function getRarityValue(item) {
-    const rarity = String(getRarity(item)).toLowerCase();
+    const rarity = String(getRarity(item)).toLowerCase().trim();
 
     const map = {
         common: 1,
         uncommon: 2,
         rare: 3,
-        veryrare: 4,
         "very rare": 4,
+        veryrare: 4,
         legendary: 5,
         mythic: 6,
-        ethereal: 7
+        ethereal: 7,
+        unbound: 8
     };
 
-    return map[rarity.replace(/\s+/g, "")] || map[rarity] || 0;
+    return map[rarity] || map[rarity.replace(/\s+/g, "")] || 0;
 }
 
-function getDescription(item) {
-    return item?.description || item?.desc || "No description available.";
+function getAttunement(item) {
+    return item?.attunement || item?.attune || "No";
+}
+
+function getContent(item) {
+    const raw = item?.content || item?.description || item?.desc || "No description available.";
+    return raw;
 }
 
 function getShortDescription(item) {
-    const desc = getDescription(item);
-    return desc.length > 140 ? desc.slice(0, 137) + "..." : desc;
+    const text = stripHTML(getContent(item)).replace(/\s+/g, " ").trim();
+    return text.length > 140 ? text.slice(0, 137) + "..." : text;
+}
+
+function stripHTML(html) {
+    const temp = document.createElement("div");
+    temp.innerHTML = String(html);
+    return temp.textContent || temp.innerText || "";
 }
 
 function escapeHTML(str) {
@@ -190,6 +217,9 @@ function escapeHTML(str) {
 
 function escapeAttr(str) {
     return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#39;");
 }
