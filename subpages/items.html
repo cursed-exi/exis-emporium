@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>The Realm of Treasure</title>
-<link rel="icon" href="/exis-emporium/img/emporium_icon.webp" type="image/webp">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style.css">
 </head>
@@ -22,17 +21,18 @@
 <article class="post">
 
 <h2>The Realm of Treasure</h2>
-<div class="meta">All the treasures of mine awating to be discovered...</div>
+<div class="meta">All the treasures of mine awaiting to be discovered...</div>
 
 <div class="license-box">
 
 <strong>License</strong>
 
 <p>
-Portions of this material reference the 
+Portions of this material reference the
 <a href="https://www.dndbeyond.com/attachments/39j2li89/SRD5.1-CCBY4.0License.pdf">
 D&D 5e System Reference Document
-</a>by Wizards of the Coast LLC.
+</a>
+by Wizards of the Coast LLC.
 </p>
 
 <p>
@@ -48,17 +48,34 @@ Original text on this page is © 2026 Exi's Emporium.
 
 </div>
 
+<!-- FILTERS -->
+<div class="note-box">
+
+    <input class="ui-input" id="search-bar" type="text" placeholder="Search items...">
+
+    <br><br>
+
+    <div class="ui-select-wrapper">
+        <select class="ui-select" id="type">
+            <option value="all">All Types</option>
+        </select>
+    </div>
+
+    <div class="ui-select-wrapper">
+        <select class="ui-select" id="sort">
+            <option value="name">Name</option>
+            <option value="rarity">Rarity</option>
+        </select>
+    </div>
+
+</div>
+
 <!-- DISPLAY -->
 <div id="item-display">
     Select an item to inspect it.
 </div>
 
 <hr>
-
-<!-- SEARCH -->
-<div class="note-box">
-    <input id="search-bar" type="text" placeholder="Search the archive...">
-</div>
 
 <!-- LIST -->
 <div id="item-list"></div>
