@@ -3,57 +3,68 @@ let items = [];
 // ===== INIT =====
 
 document.addEventListener("DOMContentLoaded", async () => {
-
     await loadItems();
 
+    populateTypes();
     renderList(items);
+    showItem(items[0] || null);
 
-    document.getElementById("search-bar")
-        .addEventListener("input", search);
+    document.getElementById("search-bar").addEventListener("input", filter);
+    document.getElementById("type").addEventListener("change", filter);
+    document.getElementById("sort").addEventListener("change", filter);
 });
 
-
-// ===== LOAD (EXPANDED) =====
+// ===== LOAD ITEMS =====
 
 async function loadItems() {
+    const url = "/exis-emporium/data/items.json";
 
-    const files = [
-        "yukis_guide_to_sain"
-        // add more later:
-        // "magic_items_pack",
-        // "relics"
-    ];
+    try {
+        const res = await fetch(url);
+        if (!res.ok) {
+            items = [];
+            return;
+        }
 
-    const results = await Promise.all(
-        files.map(f =>
-            fetch(`/exis-emporium/data/items/${f}.json`)
-                .then(res => res.ok ? res.json() : [])
-                .catch(() => [])
-        )
-    );
-
-    items = results.flat();
+        const data = await res.json();
+        items = Array.isArray(data) ? data : [];
+    } catch {
+        items = [];
+    }
 }
 
+// ===== FILTER =====
 
-// ===== SEARCH =====
+function filter() {
+    const q = document.getElementById("search-bar").value.toLowerCase();
+    const type = document.getElementById("type").value;
+    const sort = document.getElementById("sort").value;
 
-function search(e) {
+    let list = items.filter(i => {
+        const name = getName(i).toLowerCase();
+        const itemType = getType(i);
 
-    const q = e.target.value.toLowerCase();
+        return (
+            name.includes(q) &&
+            (type === "all" || itemType === type)
+        );
+    });
 
-    renderList(items.filter(i =>
-        i.name.toLowerCase().includes(q) ||
-        i.type.toLowerCase().includes(q) ||
-        i.rarity.toLowerCase().includes(q)
-    ));
+    if (sort === "name") {
+        list.sort((a, b) => getName(a).localeCompare(getName(b)));
+    } else if (sort === "rarity") {
+        list.sort((a, b) => getRarityValue(b) - getRarityValue(a));
+    }
+
+    renderList(list);
+
+    const current = list[0] || null;
+    showItem(current);
 }
 
-
-// ===== LIST =====
+// ===== RENDER LIST =====
 
 function renderList(list) {
-
     const el = document.getElementById("item-list");
     el.innerHTML = "";
 
@@ -62,46 +73,123 @@ function renderList(list) {
         return;
     }
 
-    list.forEach(i => {
+    list.forEach(item => {
+        const tile = document.createElement("div");
+        tile.className = "post-preview";
+        tile.style.cursor = "pointer";
 
-        const item = document.createElement("div");
-        item.className = "note-box";
+        const name = getName(item);
+        const rarity = getRarity(item);
+        const type = getType(item);
 
-        item.innerHTML = `
-            <strong>${i.name}</strong><br>
-            <span style="color:#aaa;">${i.type}</span><br>
-            ${i.rarity}
+        tile.innerHTML = `
+            <h2>${escapeHTML(name)}</h2>
+            <div class="meta">${escapeHTML(type)} | ${escapeHTML(rarity)}</div>
+            <p>${escapeHTML(getShortDescription(item))}</p>
+            <a class="read-link" href="javascript:void(0)">Inspect →</a>
         `;
 
-        item.onclick = () => render(i);
-
-        el.appendChild(item);
+        tile.addEventListener("click", () => showItem(item));
+        el.appendChild(tile);
     });
 }
 
+// ===== DISPLAY SINGLE ITEM =====
 
-// ===== DISPLAY =====
+function showItem(item) {
+    const el = document.getElementById("item-display");
 
-function render(i) {
+    if (!item) {
+        el.innerHTML = "Select an item to inspect it.";
+        return;
+    }
 
-    document.getElementById("item-display").innerHTML = `
-    <div class="statblock">
+    const name = getName(item);
+    const type = getType(item);
+    const rarity = getRarity(item);
+    const description = getDescription(item);
+    const link = item.link || item.url || "";
 
-        ${i.image ? `
-        <div class="image">
-            <img src="${i.image}">
-        </div>` : ""}
+    el.innerHTML = `
+        <div class="statblock">
+            <h4>${escapeHTML(name)}</h4>
+            <div class="type">${escapeHTML(type)} • ${escapeHTML(rarity)}</div>
+            <hr>
+            <div class="ability">${escapeHTML(description)}</div>
+            ${
+                link
+                    ? `<div class="action"><strong>Details:</strong> <a href="${escapeAttr(link)}">${escapeHTML(link)}</a></div>`
+                    : ""
+            }
+        </div>
+    `;
+}
 
-        <h4>${i.name}</h4>
-        <div class="type">${i.type} | ${i.rarity}</div>
+// ===== HELPERS =====
 
-        <hr>
+function populateTypes() {
+    const select = document.getElementById("type");
 
-        <p><strong>Attunement</strong> ${i.attunement}</p>
+    const types = [...new Set(items.map(i => getType(i)))].filter(Boolean);
+    types.sort((a, b) => a.localeCompare(b));
 
-        <hr>
+    types.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t;
+        opt.textContent = t;
+        select.appendChild(opt);
+    });
+}
 
-        ${i.content || ""}
+function getName(item) {
+    return item?.name || item?.title || "Unnamed Item";
+}
 
-    </div>`;
+function getType(item) {
+    return item?.type || item?.category || "Unknown";
+}
+
+function getRarity(item) {
+    return item?.rarity || item?.rarityText || item?.rarity_name || "Common";
+}
+
+function getRarityValue(item) {
+    const rarity = String(getRarity(item)).toLowerCase();
+
+    const map = {
+        common: 1,
+        uncommon: 2,
+        rare: 3,
+        veryrare: 4,
+        "very rare": 4,
+        legendary: 5,
+        mythic: 6,
+        ethereal: 7
+    };
+
+    return map[rarity.replace(/\s+/g, "")] || map[rarity] || 0;
+}
+
+function getDescription(item) {
+    return item?.description || item?.desc || "No description available.";
+}
+
+function getShortDescription(item) {
+    const desc = getDescription(item);
+    return desc.length > 140 ? desc.slice(0, 137) + "..." : desc;
+}
+
+function escapeHTML(str) {
+    return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+}
+
+function escapeAttr(str) {
+    return String(str)
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
 }
