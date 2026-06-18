@@ -13,8 +13,7 @@ let currentStrand = 0;
 let flipped = false;
 
 const THREAD_FILES = [
-    "../data/threads/mortal_thread.json",
-    "../data/threads/divine_thread.json"
+    "../data/threads/mortal_thread.json"
 ];
 
 /* =========================
