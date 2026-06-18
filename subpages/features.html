@@ -9,13 +9,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
 <header>
-    <h1><a href="./index.html">Exi's Emporium</a></h1>
+    <h1><a href="../index.html">Exi's Emporium</a></h1>
     <p>The Land of the Paper Lantern Sage</p>
 </header>
 
@@ -32,11 +32,9 @@ Classes, subclasses, feats and backgrounds.
 </div>
 
 <div class="license-box">
-
 <p>
 A collection of character options available within the Land of Sain.
 </p>
-
 </div>
 
 <div id="feature-display">
@@ -53,58 +51,67 @@ Choose a category below to begin browsing.
 
 <div class="note-box">
 
-<!-- ROW 1 -->
+    <!-- CATEGORY ROW -->
 
-<div class="feature-type-row">
+    <div class="feature-type-row">
 
-<button class="ui-button feature-type active" data-type="feats">
-Feats
-</button>
+        <button class="ui-button feature-type active"
+        data-type="feats">
+            Feats
+        </button>
 
-<button class="ui-button feature-type" data-type="classes">
-Classes
-</button>
+        <button class="ui-button feature-type"
+        data-type="classes">
+            Classes
+        </button>
 
-<button class="ui-button feature-type" data-type="subclasses">
-Subclasses
-</button>
+        <button class="ui-button feature-type"
+        data-type="subclasses">
+            Subclasses
+        </button>
 
-<button class="ui-button feature-type" data-type="backgrounds">
-Backgrounds
-</button>
+        <button class="ui-button feature-type"
+        data-type="backgrounds">
+            Backgrounds
+        </button>
+
+    </div>
+
+    <br>
+
+    <!-- FILTER ROW -->
+
+    <div class="feature-filter-row">
+
+        <input
+        id="search-bar"
+        class="ui-input"
+        type="text"
+        placeholder="Search features..."
+        >
+
+        <div class="ui-select-wrapper">
+
+            <select
+            id="source-filter"
+            class="ui-select">
+
+                <option value="all">
+                    All Sources
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
 
 </div>
 
-<br>
-
-<!-- ROW 2 -->
-
-<div class="feature-filter-row">
-
-<input
-id="search-bar"
-class="ui-input"
-type="text"
-placeholder="Search features..."
->
-
-<div class="ui-select-wrapper">
-
-<select id="source-filter" class="ui-select">
-
-<option value="all">
-All Sources
-</option>
-
-</select>
-
+<div
+id="feature-carousel"
+class="feature-carousel">
 </div>
-
-</div>
-
-</div>
-
-<div id="feature-carousel" class="feature-carousel"></div>
 
 </article>
 
@@ -118,8 +125,8 @@ All Sources
     <p>Exi's Emporium © 2026 | ExiFlow</p>
 </footer>
 
-<script src="./toolscripts/features.js"></script>
-<script src="./script.js"></script>
+<script src="../toolscripts/features.js"></script>
+<script src="../script.js"></script>
 
 </body>
 </html>
