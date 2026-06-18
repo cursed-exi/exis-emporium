@@ -1,0 +1,49 @@
+[
+  {
+    "id": "way_of_the_lantern",
+    "name": "Way of the Lantern",
+    "image": "../img/subclasses/way_of_the_lantern.webp",
+    "class": "Monk",
+    "role": "Support",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Monks of the Way of the Lantern guide lost souls and illuminate hidden truths."
+      },
+      {
+        "type": "feature",
+        "level": 3,
+        "name": "Lantern Arts",
+        "text": "You learn to create spectral lanterns that shed magical light."
+      },
+      {
+        "type": "feature",
+        "level": 6,
+        "name": "Guiding Flame",
+        "text": "Allies within 10 feet gain advantage on saving throws against fear."
+      },
+      {
+        "type": "table",
+        "headers": ["Level", "Feature"],
+        "rows": [
+          ["3", "Lantern Arts"],
+          ["6", "Guiding Flame"],
+          ["11", "Moonlit Path"],
+          ["17", "Eternal Beacon"]
+        ]
+      },
+      {
+        "type": "feature",
+        "level": 11,
+        "name": "Moonlit Path",
+        "text": "You can teleport between areas of bright light."
+      },
+      {
+        "type": "feature",
+        "level": 17,
+        "name": "Eternal Beacon",
+        "text": "Your lantern becomes a powerful celestial manifestation."
+      }
+    ]
+  }
+]
