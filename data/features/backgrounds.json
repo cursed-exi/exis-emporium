@@ -1,5 +1,39 @@
 [
   {
+    "id": "desert_nomad",
+    "name": "Desert Nomad",
+    "type": "Background",
+    "source": "Core",
+
+    "sections": [
+      {
+        "title": "Description",
+        "content": [
+          "You spent your life crossing the dunes.",
+          "You know how to find water where others would perish."
+        ]
+      },
+
+      {
+        "title": "Skill Proficiencies",
+        "content": [
+          "Survival",
+          "Nature"
+        ]
+      },
+
+      {
+        "title": "Equipment",
+        "content": [
+          "Traveler's clothes",
+          "Water skin",
+          "20 silver pieces"
+        ]
+      }
+    ]
+  }
+][
+  {
     "id": "battle_hardened",
     "name": "Battle Hardened",
     "type": "Feat",
