@@ -1,17 +1,25 @@
 [
   {
-    "id": "desert_nomad",
-    "name": "Desert Nomad",
-    "type": "Background",
+    "id": "battle_hardened",
+    "name": "Battle Hardened",
+    "type": "Feat",
     "source": "Core",
 
-    "content": "
-    <p>You spent your life crossing the dunes.</p>
+    "sections": [
+      {
+        "title": "Description",
+        "content": [
+          "Years of combat have taught you how to survive impossible odds."
+        ]
+      },
 
-    <div class='action'>
-    <strong>Skill Proficiencies.</strong>
-    Survival, Nature.
-    </div>
-    "
+      {
+        "title": "Benefits",
+        "content": [
+          "Increase Constitution by 1, to a maximum of 20.",
+          "Whenever you roll initiative, you gain temporary hit points equal to your proficiency bonus."
+        ]
+      }
+    ]
   }
 ]
