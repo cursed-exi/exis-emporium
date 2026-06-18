@@ -8,18 +8,11 @@ const displayDiv = document.getElementById("entry-display");
 const filterOrder = [];
 const filterElements = {};
 
-const files = [
-    "../data/features/generic.json",
-];
+fetch("../data/features/generic.json")
+.then(r => r.json())
+.then(data => {
 
-Promise.all(
-    files.map(
-        file => fetch(file).then(r => r.json())
-    )
-)
-.then(results => {
-
-    entries = results.flat();
+    entries = data;
 
     buildFilters();
     render();
@@ -45,11 +38,12 @@ function buildFilters() {
         const wrapper = document.createElement("div");
 
         wrapper.className = "ui-select-wrapper";
-        wrapper.style.display = index === 0
+        wrapper.style.display =
+            index === 0
             ? "inline-block"
             : "none";
 
-        wrapper.dataset.filter = filterName;
+        wrapper.style.marginRight = "8px";
 
         const select = document.createElement("select");
 
@@ -60,11 +54,15 @@ function buildFilters() {
 
         select.addEventListener("change", () => {
 
+            resetLowerFilters(filterName);
+
             updateFilters();
+
             render();
         });
 
         wrapper.appendChild(select);
+
         filtersDiv.appendChild(wrapper);
 
         filterElements[filterName] = {
@@ -74,6 +72,25 @@ function buildFilters() {
     });
 
     populateFilter(filterOrder[0]);
+
+    updateFilters();
+}
+
+function resetLowerFilters(changedFilter) {
+
+    const index =
+        filterOrder.indexOf(changedFilter);
+
+    for (
+        let i = index + 1;
+        i < filterOrder.length;
+        i++
+    ) {
+
+        filterElements[
+            filterOrder[i]
+        ].select.value = "all";
+    }
 }
 
 function populateFilter(filterName) {
@@ -87,7 +104,7 @@ function populateFilter(filterName) {
     select.innerHTML =
         `<option value="all">${filterName}</option>`;
 
-    let filtered = entries;
+    let filtered = [...entries];
 
     const index =
         filterOrder.indexOf(filterName);
@@ -98,26 +115,26 @@ function populateFilter(filterName) {
             filterOrder[i];
 
         const value =
-            filterElements[previous]
-            .select.value;
+            filterElements[
+                previous
+            ].select.value;
 
-        if (value !== "all") {
+        if (value === "all")
+            continue;
 
-            filtered = filtered.filter(
-                e =>
-                e.filters &&
-                e.filters[previous] === value
-            );
-        }
+        filtered = filtered.filter(entry =>
+            entry.filters &&
+            entry.filters[previous] === value
+        );
     }
 
     const values =
         [...new Set(
 
             filtered
-            .map(e =>
-                e.filters
-                ? e.filters[filterName]
+            .map(entry =>
+                entry.filters
+                ? entry.filters[filterName]
                 : null
             )
             .filter(Boolean)
@@ -136,56 +153,71 @@ function populateFilter(filterName) {
         select.appendChild(option);
     });
 
-    if ([...select.options]
-        .some(o => o.value === current)) {
-
+    if (
+        [...select.options]
+        .some(o => o.value === current)
+    ) {
         select.value = current;
     }
 }
 
 function updateFilters() {
 
-    let showNext = true;
-
     filterOrder.forEach((filterName, index) => {
 
         const wrapper =
-            filterElements[filterName].wrapper;
+            filterElements[
+                filterName
+            ].wrapper;
 
         if (index === 0) {
-            wrapper.style.display =
-                "inline-block";
-            return;
-        }
-
-        const previous =
-            filterOrder[index - 1];
-
-        const previousValue =
-            filterElements[previous]
-            .select.value;
-
-        if (
-            showNext &&
-            previousValue !== "all"
-        ) {
 
             wrapper.style.display =
                 "inline-block";
 
             populateFilter(filterName);
 
-        } else {
-
-            wrapper.style.display =
-                "none";
-
-            filterElements[filterName]
-            .select.value = "all";
-
-            showNext = false;
+            return;
         }
+
+        wrapper.style.display = "none";
     });
+
+    for (
+        let i = 1;
+        i < filterOrder.length;
+        i++
+    ) {
+
+        const previous =
+            filterOrder[i - 1];
+
+        const previousValue =
+            filterElements[
+                previous
+            ].select.value;
+
+        if (previousValue === "all")
+            break;
+
+        const current =
+            filterOrder[i];
+
+        populateFilter(current);
+
+        filterElements[
+            current
+        ].wrapper.style.display =
+            "inline-block";
+
+        if (
+            filterElements[
+                current
+            ].select.value === "all"
+        ) {
+            break;
+        }
+    }
 }
 
 function getFilteredEntries() {
@@ -193,30 +225,37 @@ function getFilteredEntries() {
     let filtered = [...entries];
 
     const search =
-        searchBar.value.toLowerCase();
+        searchBar.value
+        .toLowerCase()
+        .trim();
 
     if (search) {
 
-        filtered = filtered.filter(entry =>
-            entry.name
-            .toLowerCase()
-            .includes(search)
-        );
+        filtered =
+            filtered.filter(entry =>
+                entry.name
+                .toLowerCase()
+                .includes(search)
+            );
     }
 
     filterOrder.forEach(filterName => {
 
         const value =
-            filterElements[filterName]
-            .select.value;
+            filterElements[
+                filterName
+            ].select.value;
 
         if (value === "all")
             return;
 
-        filtered = filtered.filter(entry =>
-            entry.filters &&
-            entry.filters[filterName] === value
-        );
+        filtered =
+            filtered.filter(entry =>
+                entry.filters &&
+                entry.filters[
+                    filterName
+                ] === value
+            );
     });
 
     return filtered;
@@ -228,6 +267,14 @@ function render() {
         getFilteredEntries();
 
     listDiv.innerHTML = "";
+
+    if (filtered.length === 0) {
+
+        listDiv.innerHTML =
+            "<p>No entries found.</p>";
+
+        return;
+    }
 
     filtered.forEach(entry => {
 
@@ -251,12 +298,26 @@ function render() {
         listDiv.appendChild(button);
     });
 
-    if (filtered.length) {
-        showEntry(filtered[0]);
-    }
+    showEntry(filtered[0]);
 }
 
 function showEntry(entry) {
+
+    let filterInfo = "";
+
+    if (entry.filters) {
+
+        Object.entries(entry.filters)
+        .forEach(([key, value]) => {
+
+            filterInfo += `
+                <p>
+                    <strong>${key}:</strong>
+                    ${value}
+                </p>
+            `;
+        });
+    }
 
     displayDiv.innerHTML = `
 
@@ -268,16 +329,18 @@ function showEntry(entry) {
                 entry.image
                 ? `
                 <div class="image">
-                    <img src="${entry.image}">
+                    <img src="${entry.image}"
+                         alt="${entry.name}">
                 </div>
                 `
                 : ""
             }
 
-            ${entry.content}
+            ${filterInfo}
+
+            ${entry.content || ""}
 
         </div>
-
     `;
 }
 
