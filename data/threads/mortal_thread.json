@@ -1,7 +1,7 @@
 {
   "id": "mortal",
   "name": "Mortal Thread",
-  "cardImage": "img/threads/fool.webp",
+  "cardImage": "../../img/threads/fool.webp",
 
   "strands": [
     {
