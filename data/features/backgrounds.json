@@ -1,0 +1,9 @@
+[
+  {
+    "id": "desert_nomad",
+    "name": "Desert Nomad",
+    "type": "Background",
+    "source": "Core",
+    "content": "<p>You crossed the dunes long before becoming an adventurer.</p>"
+  }
+]
