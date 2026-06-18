@@ -15,7 +15,7 @@
 
         "content": [
           "Wardens stand between danger and their allies.",
-          "They specialize in battlefield control, protection and resilience."
+          "They specialize in battlefield control and resilience."
         ]
       },
 
@@ -40,35 +40,44 @@
       },
 
       {
-        "title": "Class Table",
+        "title": "Class Progression",
 
-        "html": "
+        "table": {
 
-<table>
+          "headers": [
+            "Level",
+            "Features"
+          ],
 
-<tr>
-<th>Level</th>
-<th>Features</th>
-</tr>
+          "rows": [
 
-<tr>
-<td>1</td>
-<td>Guardian Stance</td>
-</tr>
+            [
+              "1",
+              "Guardian Stance"
+            ],
 
-<tr>
-<td>2</td>
-<td>Defensive Challenge</td>
-</tr>
+            [
+              "2",
+              "Defensive Challenge"
+            ],
 
-<tr>
-<td>3</td>
-<td>Subclass</td>
-</tr>
+            [
+              "3",
+              "Subclass"
+            ],
 
-</table>
+            [
+              "4",
+              "Ability Score Improvement"
+            ],
 
-"
+            [
+              "5",
+              "Extra Attack"
+            ]
+
+          ]
+        }
       },
 
       {
@@ -76,7 +85,7 @@
 
         "content": [
           "As a bonus action, enter a defensive stance.",
-          "While in this stance, enemies provoke opportunity attacks even when using Disengage."
+          "While in this stance, enemies provoke opportunity attacks even if they use Disengage."
         ]
       }
 
