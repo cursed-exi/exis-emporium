@@ -1,16 +1,17 @@
 [
   {
-    "id": "battle_hardened",
-    "name": "Battle Hardened",
-    "type": "Feat",
+    "id": "desert_nomad",
+    "name": "Desert Nomad",
+    "type": "Background",
     "source": "Core",
-    "content": "<p>Years of combat have taught you how to survive impossible odds.</p><div class='action'><strong>Benefit.</strong> Increase Constitution by 1, to a maximum of 20.</div>"
-  },
-  {
-    "id": "silver_tongue",
-    "name": "Silver Tongue",
-    "type": "Feat",
-    "source": "Core",
-    "content": "<p>Your words flow effortlessly.</p><div class='action'><strong>Benefit.</strong> Gain proficiency in Persuasion.</div>"
+
+    "content": "
+    <p>You spent your life crossing the dunes.</p>
+
+    <div class='action'>
+    <strong>Skill Proficiencies.</strong>
+    Survival, Nature.
+    </div>
+    "
   }
 ]
