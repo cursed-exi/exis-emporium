@@ -1,9 +1,17 @@
 [
   {
-    "id": "desert_nomad",
-    "name": "Desert Nomad",
-    "type": "Background",
+    "id": "battle_hardened",
+    "name": "Battle Hardened",
+    "type": "Feat",
     "source": "Core",
-    "content": "<p>You crossed the dunes long before becoming an adventurer.</p>"
+
+    "content": "
+    <p>You have survived countless battles.</p>
+
+    <div class='action'>
+    <strong>Benefit.</strong>
+    Increase Constitution by 1.
+    </div>
+    "
   }
 ]
