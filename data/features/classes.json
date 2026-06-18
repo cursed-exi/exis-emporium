@@ -1,0 +1,94 @@
+[
+  {
+    "id": "warden",
+
+    "name": "Warden",
+
+    "type": "Class",
+
+    "source": "Core",
+
+    "sections": [
+
+      {
+        "title": "Overview",
+
+        "content": [
+          "Wardens stand between danger and their allies.",
+          "They specialize in battlefield control and resilience."
+        ]
+      },
+
+      {
+        "title": "Hit Points",
+
+        "content": [
+          "Hit Dice: 1d10 per Warden level.",
+          "Hit Points at 1st Level: 10 + Constitution modifier.",
+          "Hit Points at Higher Levels: 1d10 (or 6) + Constitution modifier."
+        ]
+      },
+
+      {
+        "title": "Proficiencies",
+
+        "content": [
+          "Armor: Light armor, medium armor, shields.",
+          "Weapons: Simple weapons and martial weapons.",
+          "Saving Throws: Strength and Constitution."
+        ]
+      },
+
+      {
+        "title": "Class Progression",
+
+        "table": {
+
+          "headers": [
+            "Level",
+            "Features"
+          ],
+
+          "rows": [
+
+            [
+              "1",
+              "Guardian Stance"
+            ],
+
+            [
+              "2",
+              "Defensive Challenge"
+            ],
+
+            [
+              "3",
+              "Subclass"
+            ],
+
+            [
+              "4",
+              "Ability Score Improvement"
+            ],
+
+            [
+              "5",
+              "Extra Attack"
+            ]
+
+          ]
+        }
+      },
+
+      {
+        "title": "Guardian Stance",
+
+        "content": [
+          "As a bonus action, enter a defensive stance.",
+          "While in this stance, enemies provoke opportunity attacks even if they use Disengage."
+        ]
+      }
+
+    ]
+  }
+]

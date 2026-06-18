@@ -1,0 +1,43 @@
+[
+  {
+    "id": "moon_guardian",
+    "name": "Moon Guardian",
+    "type": "Subclass",
+    "parent": "Warden",
+    "source": "Core",
+
+    "sections": [
+      {
+        "title": "Overview",
+        "content": [
+          "Moon Guardians defend sacred places.",
+          "Their power is drawn from the Radiant Moon."
+        ]
+      },
+
+      {
+        "title": "Level 3 - Moon Ward",
+        "content": [
+          "As a reaction, reduce damage dealt to an ally within 30 feet."
+        ]
+      },
+
+      {
+        "title": "Level 7 - Lunar Sight",
+        "content": [
+          "Your darkvision increases by 60 feet.",
+          "You gain resistance to radiant damage."
+        ]
+      }
+    ]
+  }
+][
+  {
+    "id": "moon_guardian",
+    "name": "Moon Guardian",
+    "type": "Subclass",
+    "parent": "Warden",
+    "source": "Core",
+    "content": "<p>Guardians blessed by moonlight.</p>"
+  }
+]
