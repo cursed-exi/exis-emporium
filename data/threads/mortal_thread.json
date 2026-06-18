@@ -1,0 +1,31 @@
+{
+  "id": "mortal",
+  "name": "Mortal Thread",
+  "cardImage": "img/threads/fool.webp",
+
+  "strands": [
+    {
+      "strand": "9",
+      "levels": "1-4",
+      "divinity": "None",
+
+      "content": "<p>Ordinary mortals.</p>"
+    },
+
+    {
+      "strand": "8",
+      "levels": "5-8",
+      "divinity": "None",
+
+      "content": "<p>Experienced adventurers.</p>"
+    },
+
+    {
+      "strand": "7",
+      "levels": "9-10",
+      "divinity": "None - Inhuman",
+
+      "content": "<p>The beginning of impossible achievements.</p>"
+    }
+  ]
+}
