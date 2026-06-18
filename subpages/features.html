@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <title>The Realm of Features</title>
 
 <link rel="icon" href="/exis-emporium/img/emporium_icon.webp" type="image/webp">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="./style.css">
@@ -29,12 +31,20 @@
 Classes, subclasses, feats and backgrounds.
 </div>
 
+<div class="license-box">
+
+<p>
+A collection of character options available within the Land of Sain.
+</p>
+
+</div>
+
 <div id="feature-display">
 
 <h3>Select a Feature</h3>
 
 <p>
-Choose a category below and browse its contents.
+Choose a category below to begin browsing.
 </p>
 
 </div>
@@ -43,31 +53,31 @@ Choose a category below and browse its contents.
 
 <div class="note-box">
 
+<!-- ROW 1 -->
+
 <div class="feature-type-row">
 
-<button class="ui-button feature-type active"
-data-type="Feats">
+<button class="ui-button feature-type active" data-type="feats">
 Feats
 </button>
 
-<button class="ui-button feature-type"
-data-type="Classes">
+<button class="ui-button feature-type" data-type="classes">
 Classes
 </button>
 
-<button class="ui-button feature-type"
-data-type="Subclasses">
+<button class="ui-button feature-type" data-type="subclasses">
 Subclasses
 </button>
 
-<button class="ui-button feature-type"
-data-type="Backgrounds">
+<button class="ui-button feature-type" data-type="backgrounds">
 Backgrounds
 </button>
 
 </div>
 
 <br>
+
+<!-- ROW 2 -->
 
 <div class="feature-filter-row">
 
@@ -80,8 +90,7 @@ placeholder="Search features..."
 
 <div class="ui-select-wrapper">
 
-<select id="source-filter"
-class="ui-select">
+<select id="source-filter" class="ui-select">
 
 <option value="all">
 All Sources
@@ -95,9 +104,7 @@ All Sources
 
 </div>
 
-<div id="feature-carousel"
-class="feature-carousel">
-</div>
+<div id="feature-carousel" class="feature-carousel"></div>
 
 </article>
 
