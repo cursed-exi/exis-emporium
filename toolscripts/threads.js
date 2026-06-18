@@ -1,20 +1,10 @@
-const threadSelect =
-document.getElementById("thread-select");
+const threadSelect = document.getElementById("thread-select");
+const searchBar = document.getElementById("strand-search");
+const cardContainer = document.getElementById("card-container");
 
-const searchBar =
-document.getElementById("strand-search");
-
-const cardContainer =
-document.getElementById("card-container");
-
-const prevBtn =
-document.getElementById("prev-btn");
-
-const nextBtn =
-document.getElementById("next-btn");
-
-const flipBtn =
-document.getElementById("flip-btn");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+const flipBtn = document.getElementById("flip-btn");
 
 let threads = [];
 
@@ -22,224 +12,262 @@ let currentThread = 0;
 let currentStrand = 0;
 let flipped = false;
 
-async function loadThreads(){
+/* ==========================================
+   EDIT ONLY THIS LIST
+========================================== */
 
-const manifest =
-await fetch("data/manifest.json")
-.then(r => r.json());
+const THREAD_FILES = [
+    "../data/threads/mortal_thread.json"
+];
 
-const loaded =
-await Promise.all(
+/* ==========================================
+   LOAD THREADS
+========================================== */
 
-manifest.threads.map(file =>
-fetch(file).then(r => r.json())
-)
+async function loadThreads() {
 
-);
+    try {
 
-threads = loaded;
+        threads = await Promise.all(
 
-populateThreads();
+            THREAD_FILES.map(async file => {
 
-render();
+                const response = await fetch(file);
 
-}
+                if (!response.ok) {
+                    throw new Error(
+                        `Failed loading ${file}`
+                    );
+                }
 
-function populateThreads(){
+                return response.json();
 
-threadSelect.innerHTML = "";
+            })
 
-threads.forEach((thread,index)=>{
+        );
 
-const option =
-document.createElement("option");
+        populateThreads();
+        render();
 
-option.value = index;
-option.textContent = thread.name;
+    }
 
-threadSelect.appendChild(option);
+    catch (error) {
 
-});
+        console.error(error);
 
-}
+        cardContainer.innerHTML = `
+        <div class="note-box">
+            Failed to load thread data.<br>
+            Open browser console (F12) for details.
+        </div>
+        `;
 
-function getVisibleStrands(){
-
-const thread =
-threads[currentThread];
-
-const search =
-searchBar.value
-.toLowerCase()
-.trim();
-
-if(!search)
-return thread.strands;
-
-return thread.strands.filter(s => {
-
-const text = (
-
-s.strand +
-" " +
-s.levels +
-" " +
-s.divinity +
-" " +
-s.content
-
-).toLowerCase();
-
-return text.includes(search);
-
-});
+    }
 
 }
 
-function render(){
+/* ==========================================
+   UI
+========================================== */
 
-const visible =
-getVisibleStrands();
+function populateThreads() {
 
-if(!visible.length){
+    threadSelect.innerHTML = "";
 
-cardContainer.innerHTML =
-"<div class='note-box'>No matching strands.</div>";
+    threads.forEach((thread, index) => {
 
-return;
+        const option =
+            document.createElement("option");
 
-}
+        option.value = index;
+        option.textContent = thread.name;
 
-if(currentStrand >= visible.length)
-currentStrand = 0;
+        threadSelect.appendChild(option);
 
-const thread =
-threads[currentThread];
-
-const strand =
-visible[currentStrand];
-
-cardContainer.innerHTML = `
-
-<div
-class="thread-card ${flipped ? "flipped" : ""}"
-id="thread-card">
-
-<div class="thread-face thread-front">
-
-<img src="${thread.cardImage}">
-
-</div>
-
-<div class="thread-face thread-back">
-
-<h3>${thread.name}</h3>
-
-<div class="strand-number">
-${strand.strand}
-</div>
-
-<p>
-<strong>Levels:</strong>
-${strand.levels}
-</p>
-
-<p>
-<strong>Divinity:</strong>
-${strand.divinity}
-</p>
-
-<hr>
-
-${strand.content}
-
-</div>
-
-</div>
-
-`;
-
-document
-.getElementById("thread-card")
-.addEventListener(
-"click",
-toggleFlip
-);
+    });
 
 }
 
-function toggleFlip(){
+function getVisibleStrands() {
 
-flipped = !flipped;
+    const thread = threads[currentThread];
 
-render();
+    const search =
+        searchBar.value
+            .toLowerCase()
+            .trim();
+
+    if (!search)
+        return thread.strands;
+
+    return thread.strands.filter(strand => {
+
+        const text = (
+
+            strand.strand +
+            " " +
+            strand.levels +
+            " " +
+            strand.divinity +
+            " " +
+            strand.content
+
+        ).toLowerCase();
+
+        return text.includes(search);
+
+    });
 
 }
+
+function render() {
+
+    if (!threads.length)
+        return;
+
+    const visible =
+        getVisibleStrands();
+
+    if (!visible.length) {
+
+        cardContainer.innerHTML =
+            "<div class='note-box'>No matching strands.</div>";
+
+        return;
+
+    }
+
+    if (currentStrand >= visible.length)
+        currentStrand = 0;
+
+    const thread =
+        threads[currentThread];
+
+    const strand =
+        visible[currentStrand];
+
+    cardContainer.innerHTML = `
+
+    <div
+        class="thread-card ${flipped ? "flipped" : ""}"
+        id="thread-card">
+
+        <div class="thread-face thread-front">
+
+            <img src="${thread.cardImage}" alt="${thread.name}">
+
+        </div>
+
+        <div class="thread-face thread-back">
+
+            <h3>${thread.name}</h3>
+
+            <div class="strand-number">
+                ${strand.strand}
+            </div>
+
+            <p>
+                <strong>Levels:</strong>
+                ${strand.levels}
+            </p>
+
+            <p>
+                <strong>Divinity:</strong>
+                ${strand.divinity}
+            </p>
+
+            <hr>
+
+            ${strand.content}
+
+        </div>
+
+    </div>
+
+    `;
+
+    document
+        .getElementById("thread-card")
+        .addEventListener("click", toggleFlip);
+
+}
+
+function toggleFlip() {
+
+    flipped = !flipped;
+
+    render();
+
+}
+
+/* ==========================================
+   EVENTS
+========================================== */
 
 threadSelect.addEventListener(
-"change",
-e => {
+    "change",
+    e => {
 
-currentThread =
-Number(e.target.value);
+        currentThread =
+            Number(e.target.value);
 
-currentStrand = 0;
-flipped = false;
+        currentStrand = 0;
+        flipped = false;
 
-render();
+        render();
 
-}
+    }
 );
 
 searchBar.addEventListener(
-"input",
-() => {
+    "input",
+    () => {
 
-currentStrand = 0;
+        currentStrand = 0;
 
-render();
+        render();
 
-}
+    }
 );
 
 prevBtn.addEventListener(
-"click",
-() => {
+    "click",
+    () => {
 
-const visible =
-getVisibleStrands();
+        const visible =
+            getVisibleStrands();
 
-currentStrand--;
+        currentStrand--;
 
-if(currentStrand < 0)
-currentStrand =
-visible.length - 1;
+        if (currentStrand < 0)
+            currentStrand =
+                visible.length - 1;
 
-render();
+        render();
 
-}
+    }
 );
 
 nextBtn.addEventListener(
-"click",
-() => {
+    "click",
+    () => {
 
-const visible =
-getVisibleStrands();
+        const visible =
+            getVisibleStrands();
 
-currentStrand++;
+        currentStrand++;
 
-if(currentStrand >= visible.length)
-currentStrand = 0;
+        if (currentStrand >= visible.length)
+            currentStrand = 0;
 
-render();
+        render();
 
-}
+    }
 );
 
 flipBtn.addEventListener(
-"click",
-toggleFlip
+    "click",
+    toggleFlip
 );
 
 loadThreads();
