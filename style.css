@@ -912,3 +912,73 @@ height:auto;
 }
 
 }
+
+/* ===== Feature Browser ===== */
+
+.feature-type-row{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.feature-type.active{
+border-color:#d4b46a;
+background:#17130c;
+}
+
+.feature-filter-row{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:10px;
+}
+
+.feature-carousel{
+display:flex;
+overflow-x:auto;
+gap:10px;
+
+padding:10px 0;
+margin-top:15px;
+}
+
+.feature-card{
+
+min-width:220px;
+
+border:1px solid #555;
+background:#0a0a0a;
+
+padding:12px;
+
+cursor:pointer;
+
+transition:.2s;
+}
+
+.feature-card:hover{
+border-color:#a8843a;
+background:#141414;
+}
+
+.feature-card h4{
+margin:0 0 6px 0;
+}
+
+.feature-card .meta{
+font-size:12px;
+color:#888;
+margin:0;
+}
+
+.feature-card.active{
+border-color:#d4b46a;
+box-shadow:0 0 8px rgba(212,180,106,.25);
+}
+
+@media(max-width:700px){
+
+.feature-filter-row{
+grid-template-columns:1fr;
+}
+
+}
