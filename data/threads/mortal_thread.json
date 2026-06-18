@@ -1,6 +1,11 @@
 {
-  "id": "mortal",
+    "id": "mortal",
   "name": "Mortal Thread",
+  "tags": [
+    "human",
+    "mortal",
+    "heroic"
+  ],
   "cardImage": "/exis-emporium/img/threads/fool.webp",
 
   "strands": [
