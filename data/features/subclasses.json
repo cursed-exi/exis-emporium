@@ -1,0 +1,10 @@
+[
+  {
+    "id": "moon_guardian",
+    "name": "Moon Guardian",
+    "type": "Subclass",
+    "parent": "Warden",
+    "source": "Core",
+    "content": "<p>Guardians blessed by moonlight.</p>"
+  }
+]
