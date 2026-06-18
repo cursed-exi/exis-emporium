@@ -1,0 +1,6 @@
+{
+  "threads": [
+    "data/mortal_thread.json",
+    "data/divine_thread.json"
+  ]
+}
