@@ -1,13 +1,13 @@
 const FILES = {
-    Feats: "./data/feats.json",
-    Classes: "./data/classes.json",
-    Subclasses: "./data/subclasses.json",
-    Backgrounds: "./data/backgrounds.json"
+    feats: "../data/features/feats.json",
+    classes: "../data/features/classes.json",
+    subclasses: "../features/data/subclasses.json",
+    backgrounds: "../data/features/backgrounds.json"
 };
 
-let currentType = "Feats";
 let allFeatures = [];
-let filtered = [];
+let filteredFeatures = [];
+let currentType = "feats";
 
 const display = document.getElementById("feature-display");
 const carousel = document.getElementById("feature-carousel");
@@ -31,10 +31,14 @@ async function loadType(type){
 function populateSourceFilter(){
 
     sourceFilter.innerHTML =
-        '<option value="all">All Sources</option>';
+        `<option value="all">All Sources</option>`;
 
     const sources =
-        [...new Set(allFeatures.map(x => x.source))];
+        [...new Set(
+            allFeatures
+            .map(x => x.source)
+            .filter(Boolean)
+        )];
 
     sources.sort();
 
@@ -58,18 +62,20 @@ function applyFilters(){
     const source =
         sourceFilter.value;
 
-    filtered = allFeatures.filter(feature => {
+    filteredFeatures =
+        allFeatures.filter(feature => {
 
-        const searchMatch =
-            feature.name.toLowerCase()
-            .includes(search);
+            const searchMatch =
+                feature.name
+                .toLowerCase()
+                .includes(search);
 
-        const sourceMatch =
-            source === "all"
-            || feature.source === source;
+            const sourceMatch =
+                source === "all"
+                || feature.source === source;
 
-        return searchMatch && sourceMatch;
-    });
+            return searchMatch && sourceMatch;
+        });
 
     renderCarousel();
 }
@@ -78,7 +84,15 @@ function renderCarousel(){
 
     carousel.innerHTML = "";
 
-    filtered.forEach(feature => {
+    if(filteredFeatures.length === 0){
+
+        carousel.innerHTML =
+            "<p>No features found.</p>";
+
+        return;
+    }
+
+    filteredFeatures.forEach(feature => {
 
         const card =
             document.createElement("div");
@@ -88,17 +102,17 @@ function renderCarousel(){
         card.innerHTML = `
             <h4>${feature.name}</h4>
 
-            <p class="meta">
-                ${feature.source}
-            </p>
+            <div class="meta">
+                ${feature.source || ""}
+            </div>
         `;
 
         card.onclick = () => {
 
             document
-            .querySelectorAll(".feature-card")
-            .forEach(x =>
-                x.classList.remove("active"));
+                .querySelectorAll(".feature-card")
+                .forEach(x =>
+                    x.classList.remove("active"));
 
             card.classList.add("active");
 
@@ -108,49 +122,73 @@ function renderCarousel(){
         carousel.appendChild(card);
     });
 
-    if(filtered.length){
-        renderFeature(filtered[0]);
-        carousel.firstChild.classList.add("active");
-    }
+    carousel.firstChild.classList.add("active");
+
+    renderFeature(filteredFeatures[0]);
 }
 
 function renderFeature(feature){
 
-    display.innerHTML = `
-
+    let html = `
         <h2>${feature.name}</h2>
 
         <div class="meta">
-
-            ${feature.type}
-
-            ${feature.parent
-                ? " | " + feature.parent
-                : ""}
-
+            ${feature.type || ""}
+            ${feature.parent ? " | " + feature.parent : ""}
         </div>
-
-        ${feature.content}
     `;
+
+    if(feature.sections){
+
+        feature.sections.forEach(section => {
+
+            html += `
+                <h3>${section.title}</h3>
+            `;
+
+            if(section.content){
+
+                section.content.forEach(paragraph => {
+
+                    html += `
+                        <p>${paragraph}</p>
+                    `;
+                });
+            }
+
+            if(section.html){
+
+                html += section.html;
+            }
+
+        });
+
+    } else {
+
+        html += feature.content || "";
+    }
+
+    display.innerHTML = html;
 }
 
 document
 .querySelectorAll(".feature-type")
 .forEach(button => {
 
-    button.onclick = () => {
+    button.addEventListener("click", () => {
 
         document
-        .querySelectorAll(".feature-type")
-        .forEach(x =>
-            x.classList.remove("active"));
+            .querySelectorAll(".feature-type")
+            .forEach(x =>
+                x.classList.remove("active"));
 
         button.classList.add("active");
 
         loadType(
             button.dataset.type
         );
-    };
+    });
+
 });
 
 searchBar.addEventListener(
@@ -163,4 +201,4 @@ sourceFilter.addEventListener(
     applyFilters
 );
 
-loadType("Feats");
+loadType("feats");
