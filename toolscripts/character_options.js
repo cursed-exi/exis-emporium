@@ -8,14 +8,20 @@ const displayDiv = document.getElementById("entry-display");
 const filterOrder = [];
 const filterElements = {};
 
-fetch("../data/character_options.json")
-.then(r => r.json())
-.then(data => {
+const files = [
+    "../data/features/generic.json",
+];
 
-    entries = data;
+Promise.all(
+    files.map(
+        file => fetch(file).then(r => r.json())
+    )
+)
+.then(results => {
+
+    entries = results.flat();
 
     buildFilters();
-
     render();
 });
 
