@@ -12,17 +12,14 @@ let currentThread = 0;
 let currentStrand = 0;
 let flipped = false;
 
-/* ==========================================
-   EDIT ONLY THIS LIST
-========================================== */
-
 const THREAD_FILES = [
-    "../data/threads/mortal_thread.json"
+    "../data/threads/mortal_thread.json",
+    "../data/threads/divine_thread.json"
 ];
 
-/* ==========================================
+/* =========================
    LOAD THREADS
-========================================== */
+========================= */
 
 async function loadThreads() {
 
@@ -57,8 +54,7 @@ async function loadThreads() {
 
         cardContainer.innerHTML = `
         <div class="note-box">
-            Failed to load thread data.<br>
-            Open browser console (F12) for details.
+            Failed to load thread data.
         </div>
         `;
 
@@ -66,15 +62,50 @@ async function loadThreads() {
 
 }
 
-/* ==========================================
-   UI
-========================================== */
+/* =========================
+   THREAD FILTER
+========================= */
+
+function getVisibleThreads() {
+
+    const search =
+        searchBar.value
+            .toLowerCase()
+            .trim();
+
+    if (!search)
+        return threads;
+
+    return threads.filter(thread => {
+
+        const text = (
+
+            (thread.name || "") +
+            " " +
+            (thread.id || "") +
+            " " +
+            (thread.tags || []).join(" ")
+
+        ).toLowerCase();
+
+        return text.includes(search);
+
+    });
+
+}
+
+/* =========================
+   DROPDOWN
+========================= */
 
 function populateThreads() {
 
+    const visibleThreads =
+        getVisibleThreads();
+
     threadSelect.innerHTML = "";
 
-    threads.forEach((thread, index) => {
+    visibleThreads.forEach((thread, index) => {
 
         const option =
             document.createElement("option");
@@ -88,63 +119,38 @@ function populateThreads() {
 
 }
 
-function getVisibleStrands() {
-
-    const thread = threads[currentThread];
-
-    const search =
-        searchBar.value
-            .toLowerCase()
-            .trim();
-
-    if (!search)
-        return thread.strands;
-
-    return thread.strands.filter(strand => {
-
-        const text = (
-
-            strand.strand +
-            " " +
-            strand.levels +
-            " " +
-            strand.divinity +
-            " " +
-            strand.content
-
-        ).toLowerCase();
-
-        return text.includes(search);
-
-    });
-
-}
+/* =========================
+   RENDER
+========================= */
 
 function render() {
 
-    if (!threads.length)
-        return;
+    const visibleThreads =
+        getVisibleThreads();
 
-    const visible =
-        getVisibleStrands();
+    if (!visibleThreads.length) {
 
-    if (!visible.length) {
-
-        cardContainer.innerHTML =
-            "<div class='note-box'>No matching strands.</div>";
+        cardContainer.innerHTML = `
+        <div class="note-box">
+            No matching threads.
+        </div>
+        `;
 
         return;
 
     }
 
-    if (currentStrand >= visible.length)
-        currentStrand = 0;
+    if (currentThread >= visibleThreads.length)
+        currentThread = 0;
 
     const thread =
-        threads[currentThread];
+        visibleThreads[currentThread];
+
+    if (currentStrand >= thread.strands.length)
+        currentStrand = 0;
 
     const strand =
-        visible[currentStrand];
+        thread.strands[currentStrand];
 
     cardContainer.innerHTML = `
 
@@ -154,7 +160,9 @@ function render() {
 
         <div class="thread-face thread-front">
 
-            <img src="${thread.cardImage}" alt="${thread.name}">
+            <img
+                src="${thread.cardImage}"
+                alt="${thread.name}">
 
         </div>
 
@@ -188,9 +196,16 @@ function render() {
 
     document
         .getElementById("thread-card")
-        .addEventListener("click", toggleFlip);
+        .addEventListener(
+            "click",
+            toggleFlip
+        );
 
 }
+
+/* =========================
+   FLIP
+========================= */
 
 function toggleFlip() {
 
@@ -200,9 +215,9 @@ function toggleFlip() {
 
 }
 
-/* ==========================================
+/* =========================
    EVENTS
-========================================== */
+========================= */
 
 threadSelect.addEventListener(
     "change",
@@ -223,8 +238,10 @@ searchBar.addEventListener(
     "input",
     () => {
 
+        currentThread = 0;
         currentStrand = 0;
 
+        populateThreads();
         render();
 
     }
@@ -234,14 +251,20 @@ prevBtn.addEventListener(
     "click",
     () => {
 
-        const visible =
-            getVisibleStrands();
+        const visibleThreads =
+            getVisibleThreads();
+
+        if (!visibleThreads.length)
+            return;
+
+        const thread =
+            visibleThreads[currentThread];
 
         currentStrand--;
 
         if (currentStrand < 0)
             currentStrand =
-                visible.length - 1;
+                thread.strands.length - 1;
 
         render();
 
@@ -252,13 +275,23 @@ nextBtn.addEventListener(
     "click",
     () => {
 
-        const visible =
-            getVisibleStrands();
+        const visibleThreads =
+            getVisibleThreads();
+
+        if (!visibleThreads.length)
+            return;
+
+        const thread =
+            visibleThreads[currentThread];
 
         currentStrand++;
 
-        if (currentStrand >= visible.length)
+        if (
+            currentStrand >=
+            thread.strands.length
+        ) {
             currentStrand = 0;
+        }
 
         render();
 
