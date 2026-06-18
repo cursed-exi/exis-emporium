@@ -1,0 +1,9 @@
+[
+  {
+    "id": "warden",
+    "name": "Warden",
+    "type": "Class",
+    "source": "Core",
+    "content": "<p>A protector who stands between danger and allies.</p>"
+  }
+]
