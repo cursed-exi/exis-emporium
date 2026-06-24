@@ -1,5 +1,13 @@
 [
     {
+    "id": "mtale_of_the_starbeast",
+    "title": "Tales of Sain: The Tale of the Starbeast",
+    "date": "2026-06-24",
+    "category": "Land of Sain",
+    "description": "An article about the core myth of my setting and explenation why the things are the way they are.",
+    "link": "../Articles/2026/tale_of_the_starbeast.html"
+    },
+    {
     "id": "mortal_limits",
     "title": "Mortal Limits",
     "date": "2026-06-17",
