@@ -1,4 +1,12 @@
 [
+        {
+    "id": "persistent_world",
+    "title": "Persistent World",
+    "date": "2026-07-01",
+    "category": "Worldbuilding",
+    "description": "An article about why I think wyping the slate clean after each campaign is not good.",
+    "link": "../Articles/2026/persistent_world.html"
+    },
     {
     "id": "mtale_of_the_starbeast",
     "title": "Tales of Sain: The Tale of the Starbeast",
