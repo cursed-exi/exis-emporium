@@ -1,11 +1,19 @@
 [
         {
+    "id": "modern_weapons",
+    "title": "Modern Weapons",
+    "date": "2026-07-08",
+    "category": "Mechanics Discussion",
+    "description": "An article about modern weapons in TTRPGs and how I use them.",
+    "link": "../Articles/2026/persistent_world.html"
+    },
+        {
     "id": "persistent_world",
     "title": "Persistent World",
     "date": "2026-07-01",
     "category": "Worldbuilding",
     "description": "An article about why I think wyping the slate clean after each campaign is not good.",
-    "link": "../Articles/2026/persistent_world.html"
+    "link": "../Articles/2026/modern_weapons.html"
     },
     {
     "id": "mtale_of_the_starbeast",
