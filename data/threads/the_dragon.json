@@ -1,0 +1,92 @@
+{
+    "id": "dragon",
+  "name": "The Dragon",
+  "tags": [
+    "Dragon",
+    "Fire",
+    "Destruction"
+  ],
+  "cardImage": "/exis-emporium/img/threads/the_dragon.webp",
+
+  "strands": [
+    {
+      "strand": "9",
+      "levels": "1-4",
+      "divinity": "None",
+
+      "content": "<p><strong>Spark</strong></p>"
+    },
+
+    {
+      "strand": "8",
+      "levels": "5-8",
+      "divinity": "None",
+
+       "content": "<p><strong>Torchbearer</strong></p>"
+    },
+
+    {
+      "strand": "7",
+      "levels": "9-10",
+      "divinity": "None - Inhuman",
+
+       "content": "<p><strong>Hunter</strong></p>"
+    },
+      {
+      "strand": "6",
+      "levels": "11-12",
+      "divinity": "None - Inhuman",
+
+       "content": "<p><strong>Predator</strong></p>"
+    },
+      {
+      "strand": "5",
+      "levels": "13-14",
+      "divinity": "Minor",
+
+       "content": "<p><strong>Apex Predator</strong></p>"
+    },
+      {
+      "strand": "4",
+      "levels": "15-16",
+      "divinity": "Minor",
+
+       "content": "<p><strong>Dragon</strong></p>"
+    },
+      {
+      "strand": "3",
+      "levels": "17-18",
+      "divinity": "Minor",
+
+       "content": "<p><strong>Vernequinn</strong></p>"
+    },
+      {
+      "strand": "2",
+      "levels": "19",
+      "divinity": "Minor - Angelic",
+
+       "content": "<p><strong>Chromatic/Metallic/Gem Soul</strong></p>"
+    },
+      {
+      "strand": "1",
+      "levels": "20",
+      "divinity": "Minor - Angelic",
+
+       "content": "<p><strong>The Bloodless</strong></p>"
+    },
+      {
+      "strand": "0",
+      "levels": "21+",
+      "divinity": "Major - Demigod",
+
+       "content": "<p><strong>Weavebreaker</strong></p>"
+    },
+      {
+      "strand": "-1 (ERR)",
+      "levels": "21+",
+      "divinity": "Major - God",
+
+       "content": "<p><strong>Monarch Uncrowned</strong></p>"
+    },
+  ]
+}
