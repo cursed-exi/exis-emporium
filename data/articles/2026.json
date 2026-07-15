@@ -1,5 +1,13 @@
 [
         {
+    "id": "exo_frames",
+    "title": "EXO Frames",
+    "date": "2026-07-15",
+    "category": "Mechanics Discussion",
+    "description": "An article about a mechanic playtest - EXO Frames",
+    "link": "../Articles/2026/exo_frames.html"
+    },
+        {
     "id": "modern_weapons",
     "title": "Modern Weapons",
     "date": "2026-07-08",
