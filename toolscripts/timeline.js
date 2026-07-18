@@ -90,7 +90,6 @@ function buildYear(year, events){
     marker.className = "timeline-marker";
 
     marker.innerHTML = `
-        <div class="timeline-dot"></div>
         <div class="timeline-year">${year}</div>
     `;
 
