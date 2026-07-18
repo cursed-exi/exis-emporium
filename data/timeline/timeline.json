@@ -1,0 +1,60 @@
+[
+  {
+    "age": "Age of Myths",
+    "subtitle": "Before recorded history.",
+    "events": [
+      {
+        "year": "-1200",
+        "title": "The First Flame",
+        "text": "The world awakens beneath the Paper Lantern."
+      },
+      {
+        "year": "-1200",
+        "title": "Birth of Dragons",
+        "text": "The first dragons emerge."
+      },
+      {
+        "year": "-980",
+        "title": "The Giant Wars",
+        "text": "The ancient giants wage war upon creation."
+      }
+    ]
+  },
+  {
+    "age": "Age of Kingdoms",
+    "subtitle": "The first civilizations rise.",
+    "events": [
+      {
+        "year": "-500",
+        "title": "The Eastern Empire",
+        "text": "The eastern kingdoms unite."
+      },
+      {
+        "year": "-320",
+        "title": "Crystal Road",
+        "text": "Trade flourishes across the continent."
+      },
+      {
+        "year": "-320",
+        "title": "Founding of Valen",
+        "text": "The city of Valen is established."
+      },
+      {
+        "year": "0",
+        "title": "The New Calendar",
+        "text": "Modern dating begins."
+      }
+    ]
+  },
+  {
+    "age": "Modern Age",
+    "subtitle": "The current era.",
+    "events": [
+      {
+        "year": "215",
+        "title": "Exi's Emporium Opens",
+        "text": "A curious merchant begins collecting relics."
+      }
+    ]
+  }
+]
