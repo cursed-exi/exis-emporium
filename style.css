@@ -914,80 +914,219 @@ height:auto;
 }
 
 
+/* ==========================================================
+   Timeline
+   ========================================================== */
 
+.timeline-age{
 
+    margin:60px 0 35px 25px;
 
-
-
-/* ===== THREADS ===== */
-
-.thread-view{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:15px;
-margin-top:20px;
 }
 
-.thread-card{
-width:320px;
-max-width:100%;
-aspect-ratio:1024/1536;
+.timeline-age h2{
 
-position:relative;
+    margin:0;
 
-cursor:pointer;
+    text-align:center;
 
-transform-style:preserve-3d;
-transition:transform .55s ease;
+    font-size:28px;
+
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    color:#f2d999;
+
 }
 
-.thread-card.flipped{
-transform:rotateY(180deg);
+.timeline-age p{
+
+    margin:8px 0 30px;
+
+    text-align:center;
+
+    color:#888;
+    font-style:italic;
+
 }
 
-.thread-face{
-position:absolute;
+/* decorative divider */
 
-width:100%;
-height:100%;
+.timeline-age::before,
+.timeline-age::after{
 
-backface-visibility:hidden;
+    content:"";
 
-border:1px solid #555;
+    display:block;
 
-background:#0a0a0a;
+    height:1px;
+
+    background:#444;
+
 }
 
-.thread-front img{
-width:100%;
-height:100%;
-object-fit:cover;
+.timeline-age::before{
+
+    margin-bottom:20px;
+
 }
 
-.thread-back{
-transform:rotateY(180deg);
+.timeline-age::after{
 
-padding:15px;
-box-sizing:border-box;
+    margin-top:20px;
 
-overflow-y:auto;
 }
 
-.thread-controls{
-display:flex;
-gap:10px;
-justify-content:center;
-flex-wrap:wrap;
+/* ==========================================================
+   Vertical Line
+   ========================================================== */
+
+.timeline-line{
+
+    position:relative;
+
+    margin-left:90px;      /* was 140px */
+    padding-left:35px;     /* was 40px */
+
 }
 
-.strand-number{
-font-size:42px;
-font-weight:bold;
-color:#f2d999;
-margin-bottom:10px;
+.timeline-line::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:5px;             /* was 2px */
+
+    background:#a8843a;
+
 }
 
-.thread-back h3{
-margin-top:0;
+/* ==========================================================
+   Year Row
+   ========================================================== */
+
+.timeline-row{
+
+    position:relative;
+
+    margin-bottom:45px;
+
+    min-height:60px;
+
+}
+
+/* ==========================================================
+   Marker
+   ========================================================== */
+
+.timeline-marker{
+
+    position:absolute;
+
+    left:-90px;            /* was -140px */
+
+    width:70px;            /* was 120px */
+
+    text-align:right;
+
+}
+
+.timeline-dot{
+
+    position:absolute;
+
+    right:-21px;           /* adjust if needed */
+    top:6px;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#f2d999;
+
+    border:2px solid #111;
+
+    box-shadow:0 0 8px rgba(242,217,153,.45);
+
+}
+
+.timeline-year{
+
+    display:inline-block;
+
+    padding:4px 10px;
+
+    border:1px solid #555;
+
+    background:#0a0a0a;
+
+    color:#f2d999;
+
+    font-weight:bold;
+
+}
+
+/* ==========================================================
+   Event Cards
+   ========================================================== */
+
+.timeline-events{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-left:25px;
+
+}
+
+.timeline-event{
+
+    flex:1;
+
+    min-width:260px;
+
+    border:1px solid #444;
+    border-left:5px solid #a8843a;   /* was 4px */
+
+    background:#0c0c0c;
+
+    padding:14px;
+
+}
+
+.timeline-event:hover{
+
+    border-left-color:#f2d999;
+
+    background:#111;
+
+}
+
+.timeline-event h3{
+
+    margin:0 0 10px;
+
+    font-size:18px;
+
+    color:#ddd;
+
+}
+
+.timeline-event p{
+
+    margin:0;
+
+    color:#aaa;
+
+    line-height:1.5;
+
 }
