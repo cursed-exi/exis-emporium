@@ -1,28 +1,28 @@
 [
   {
-    "age": "Age of Myths",
-    "subtitle": "Before recorded history.",
+    "age": "Ancient History",
+    "subtitle": "The time of magic and artifice",
     "events": [
       {
-        "year": "-1200",
-        "title": "The First Flame",
-        "text": "The world awakens beneath the Paper Lantern."
+        "year": "-50.000+",
+        "title": "First peoples are recorded.",
+        "text": "Here appears the first surviving record of sentient activities."
+      },
+       {
+        "year": "-50.000+",
+        "title": "Dragons Emerge.",
+        "text": "Dragons are documented, as a new and never seen phenomena."
       },
       {
-        "year": "-1200",
-        "title": "Birth of Dragons",
-        "text": "The first dragons emerge."
-      },
-      {
-        "year": "-980",
-        "title": "The Giant Wars",
-        "text": "The ancient giants wage war upon creation."
+        "year": "-50.000+",
+        "title": "The Artificium",
+        "text": "Dolor of Tahlena, now only a mythical figure creates a first artifice device."
       }
     ]
   },
   {
-    "age": "Age of Kingdoms",
-    "subtitle": "The first civilizations rise.",
+    "age": "Age of Pride",
+    "subtitle": "The pinnacle of existance.",
     "events": [
       {
         "year": "-500",
