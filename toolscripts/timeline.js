@@ -13,8 +13,7 @@ async function loadTimeline() {
     try {
         const [worldResponse, localResponse] = await Promise.all([
             fetch("/exis-emporium/data/timeline/timeline.json"),
-            fetch("/exis-emporium/data/timeline/timeline_local.json"),
-            fetch("/exis-emporium/data/timeline/timeline_thethrone.json")
+            fetch("/exis-emporium/data/timeline/timeline_local.json")
         ]);
 
         if (!worldResponse.ok || !localResponse.ok) {
