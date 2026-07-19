@@ -14,7 +14,7 @@
         "text": "Dragons are documented, as a new and never seen phenomena."
       },
       {
-        "year": "-50.000+",
+        "year": "-50.000",
         "title": "The Artificium",
         "text": "Dolor of Tahlena, now only a mythical figure creates a first artifice device."
       }
@@ -25,35 +25,99 @@
     "subtitle": "The pinnacle of existance.",
     "events": [
       {
-        "year": "-500",
-        "title": "The Eastern Empire",
-        "text": "The eastern kingdoms unite."
+        "year": "-45.000",
+        "title": "The City of Sain is established.",
+        "text": "Establishment ofCity of Sain in the southern part of the continent."
       },
       {
-        "year": "-320",
-        "title": "Crystal Road",
-        "text": "Trade flourishes across the continent."
+        "year": "-41.000",
+        "title": "First Empire of Sain",
+        "text": "First united Empire of Sain emerges, under the great Khan."
       },
       {
-        "year": "-320",
-        "title": "Founding of Valen",
-        "text": "The city of Valen is established."
+        "year": "-40.000",
+        "title": "Grand Gardens of Kriggz are finished",
+        "text": "The Grand Gardens on the moon Kirggz are finished for all to see, as a show of might from the Empire of Sain."
+      },
+       {
+        "year": "-37.000",
+        "title": "The Continent becomes known as the Land of Sain",
+        "text": "As the Empire of Sain cements its dominance."
       },
       {
-        "year": "0",
-        "title": "The New Calendar",
-        "text": "Modern dating begins."
+        "year": "-36.500",
+        "title": "Pinnacle of the Empire of Sain",
+        "text": "The Empire of Sain reachies its largest extent, controlling more than 80% of the discovered landmass."
+      },
+      {
+        "year": "-34.000",
+        "title": "The New Schism",
+        "text": "Not much is known today about the New Schism, but it was a first domino to fall in the fall of Sain."
+      },
+      {
+        "year": "-21.000",
+        "title": "The Existences from beyond arrive",
+        "text": "The First known sighting of the Existances from beyond - grand creatures from outside the Land of Sain."
       }
     ]
   },
   {
-    "age": "Modern Age",
-    "subtitle": "The current era.",
+    "age": "Age of Stars",
+    "subtitle": "The era forgotten.",
     "events": [
       {
-        "year": "215",
-        "title": "Exi's Emporium Opens",
-        "text": "A curious merchant begins collecting relics."
+        "year": "-16.500",
+        "title": "Starbeast's Emissary arrives",
+        "text": "The people are tempted by an Existance from beyond."
+      },
+      {
+        "year": "-16.000",
+        "title": "Starbeast takes control over the Empire of Sain",
+        "text": "As the reign of 12 tyrants begins."
+      },
+      {
+        "year": "-15.000",
+        "title": "The Grand Fire - Start of the dark ages",
+        "text": "All the knowledge of Sain is destroyed in the Grand Carnival for the enjoyment of people, as they did not know what they did."
+      },
+      {
+        "year": "-500",
+        "title": "The Five assembles",
+        "text": "Five brave heroes of unknown origin begin to stand against the influence of the Starbeast and 12 tyrants."
+      },
+       {
+        "year": "-493",
+        "title": "The First tyrant falls",
+        "text": "Only 11 more to go."
+      },
+       {
+        "year": "-471",
+        "title": "The last tyrant falls",
+        "text": "And now only Starbeast's Emissary remains."
+      },
+      {
+        "year": "-469",
+        "title": "The Emissary is killed - the destruction of the City of Sain",
+        "text": "What remians is only ruins and death, as anyone who ventures there will die."
+      },
+      {
+        "year": "-469",
+        "title": "The Aptheosis of the Five",
+        "text": "Where they claim their rightful place."
+      }
+      {
+    "age": "Age of Warlords",
+    "subtitle": "The power-vacuum begins.",
+    "events": [
+      {
+        "year": "-465",
+        "title": "Wars of the Bog begin",
+        "text": "The wars bring death, but also innovation. This series of conflicts propels science forward."
+      },
+       {
+        "year": "-462",
+        "title": "Discovery of Gunpowder",
+        "text": "<<The humane and effective way to solve the problem of enemy positions>>."
       }
     ]
   }
