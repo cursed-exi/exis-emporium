@@ -48,6 +48,9 @@ function buildTimeline(){
     timeline.innerHTML = "";
 
     const selectedRegion = localTimelines.find(region => region.id === regionPicker.value);
+    const regionColors = getRegionColors(selectedRegion);
+    timeline.style.setProperty("--region-color", regionColors.color);
+    timeline.style.setProperty("--region-highlight", regionColors.highlight);
     const worldEvents = collectEvents(worldTimeline, "world");
     const localEvents = collectEvents(selectedRegion?.timeline || [], "local");
     const worldAgeHeadings = collectWorldAgeHeadings(worldTimeline);
@@ -81,6 +84,13 @@ function buildTimeline(){
     }
 
     timeline.appendChild(line);
+}
+
+function getRegionColors(region) {
+    return {
+        color: region?.color || "",
+        highlight: region?.highlightColor || ""
+    };
 }
 
 function collectWorldAgeHeadings(ages) {
