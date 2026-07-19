@@ -2,6 +2,8 @@
   {
     "id": "erdan",
     "name": "Erdan",
+    "color": "#4b95a8",
+    "highlightColor": "#8ed9ed",
     "timeline": [
       {
         "age": "Regional history",
@@ -19,6 +21,8 @@
   {
     "id": "throne",
     "name": "The Throne",
+    "color": "#9b6fc5",
+    "highlightColor": "#d6b5ff",
     "timeline": [
       {
         "age": "Regional history",
