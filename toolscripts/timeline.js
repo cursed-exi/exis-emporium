@@ -48,86 +48,57 @@ function buildTimeline(){
     timeline.innerHTML = "";
 
     const selectedRegion = localTimelines.find(region => region.id === regionPicker.value);
-    const tracks = document.createElement("div");
-    tracks.className = "timeline-tracks";
+    const worldEvents = collectEvents(worldTimeline, "world");
+    const localEvents = collectEvents(selectedRegion?.timeline || [], "local");
+    const years = [...new Set([...worldEvents.keys(), ...localEvents.keys()])]
+        .sort((first, second) => yearValue(first) - yearValue(second));
 
-    tracks.appendChild(buildTrack("World timeline", worldTimeline, "world"));
-
-    if (selectedRegion) {
-        tracks.appendChild(buildTrack(`${selectedRegion.name} timeline`, selectedRegion.timeline, "local"));
-    }
-
-    timeline.appendChild(tracks);
-}
-
-function buildTrack(title, ages, type) {
-    const track = document.createElement("section");
-    track.className = `timeline-track timeline-track--${type}`;
-
-    const heading = document.createElement("h2");
-    heading.className = "timeline-track-title";
-    heading.textContent = title;
-    track.appendChild(heading);
+    const legend = document.createElement("div");
+    legend.className = "timeline-legend";
+    legend.innerHTML = `
+        <span class="timeline-legend-world">World timeline</span>
+        <span class="timeline-legend-local">${selectedRegion?.name || "Regional"} timeline</span>
+    `;
+    timeline.appendChild(legend);
 
     const line = document.createElement("div");
-    line.className = "timeline-line";
+    line.className = "timeline-line timeline-line--dual";
 
-    ages.forEach(age => buildAge(age, line));
+    years.forEach(year => {
+        line.appendChild(buildYear(year, worldEvents.get(year) || [], localEvents.get(year) || []));
+    });
 
-    if (!ages.some(age => age.events.length)) {
+    if (!localEvents.size) {
         const emptyState = document.createElement("div");
-        emptyState.className = "timeline-event timeline-empty";
+        emptyState.className = "timeline-event timeline-event--local timeline-empty";
         emptyState.textContent = "No regional events have been added yet.";
         line.appendChild(emptyState);
     }
 
-    track.appendChild(line);
-
-    return track;
-
+    timeline.appendChild(line);
 }
 
-/* ===========================================================
-   AGE
-   =========================================================== */
+function collectEvents(ages, type) {
+    const eventsByYear = new Map();
 
-function buildAge(age, line){
+    ages.forEach(age => {
+        age.events.forEach(event => {
+            if (!eventsByYear.has(event.year)) {
+                eventsByYear.set(event.year, []);
+            }
 
-    const heading = document.createElement("section");
-    heading.className = "timeline-age";
-
-    heading.innerHTML = `
-        <h2>${age.age}</h2>
-        <p>${age.subtitle}</p>
-    `;
-
-    // The heading remains a separate era, but lives on the shared line.
-    line.appendChild(heading);
-
-    const years = {};
-
-    age.events.forEach(event=>{
-
-        if(!years[event.year])
-            years[event.year]=[];
-
-        years[event.year].push(event);
-
+            eventsByYear.get(event.year).push({ ...event, age: age.age, type });
+        });
     });
 
-    Object.keys(years).forEach(year=>{
-
-        line.appendChild(buildYear(year, years[year]));
-
-    });
-
+    return eventsByYear;
 }
 
-/* ===========================================================
-   YEAR
-   =========================================================== */
+function yearValue(year) {
+    return Number(year.replaceAll(".", "").replace("+", "")) || 0;
+}
 
-function buildYear(year, events){
+function buildYear(year, worldEvents, localEvents){
 
     const row = document.createElement("div");
     row.className = "timeline-row";
@@ -144,12 +115,13 @@ function buildYear(year, events){
     const cards = document.createElement("div");
     cards.className = "timeline-events";
 
-    events.forEach(event=>{
+    [...worldEvents, ...localEvents].forEach(event=>{
 
         const card = document.createElement("div");
-        card.className = "timeline-event";
+        card.className = `timeline-event timeline-event--${event.type}`;
 
         card.innerHTML = `
+            <div class="timeline-event-age">${event.age}</div>
             <h3>${event.title}</h3>
             <p>${event.text}</p>
         `;
