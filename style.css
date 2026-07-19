@@ -1157,7 +1157,7 @@ height:auto;
 }
 
 .timeline-legend-world{ color:#f2d999; }
-.timeline-legend-local{ color:#8ed9ed; }
+.timeline-legend-local{ color:var(--region-highlight, #8ed9ed); }
 
 .timeline-line--dual::before{
     background:#a8843a;
@@ -1170,7 +1170,7 @@ height:auto;
     top:0;
     bottom:0;
     width:5px;
-    background:#4b95a8;
+    background:var(--region-color, #4b95a8);
 }
 
 .timeline-line--dual{
@@ -1188,11 +1188,11 @@ height:auto;
 }
 
 .timeline-event--local{
-    border-left:7px solid #4b95a8;
+    border-left:7px solid var(--region-color, #4b95a8);
 }
 
 .timeline-event--world:hover{ border-left-color:#f2d999; }
-.timeline-event--local:hover{ border-left-color:#8ed9ed; }
+.timeline-event--local:hover{ border-left-color:var(--region-highlight, #8ed9ed); }
 
 .timeline-age--world{
     margin:55px 0 28px 30px;
