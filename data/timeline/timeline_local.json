@@ -6,7 +6,13 @@
       {
         "age": "Regional history",
         "subtitle": "Add events from Erdan's history here.",
-        "events": []
+        "events": [
+          {
+        "year": "-1000",
+        "title": "TEST",
+        "text": "TEST"
+        }
+        ]
       }
     ]
   }

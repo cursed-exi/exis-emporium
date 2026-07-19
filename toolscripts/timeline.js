@@ -50,6 +50,7 @@ function buildTimeline(){
     const selectedRegion = localTimelines.find(region => region.id === regionPicker.value);
     const worldEvents = collectEvents(worldTimeline, "world");
     const localEvents = collectEvents(selectedRegion?.timeline || [], "local");
+    const worldAgeHeadings = collectWorldAgeHeadings(worldTimeline);
     const years = [...new Set([...worldEvents.keys(), ...localEvents.keys()])]
         .sort((first, second) => yearValue(first) - yearValue(second));
 
@@ -65,6 +66,10 @@ function buildTimeline(){
     line.className = "timeline-line timeline-line--dual";
 
     years.forEach(year => {
+        (worldAgeHeadings.get(year) || []).forEach(age => {
+            line.appendChild(buildAgeHeading(age));
+        });
+
         line.appendChild(buildYear(year, worldEvents.get(year) || [], localEvents.get(year) || []));
     });
 
@@ -76,6 +81,37 @@ function buildTimeline(){
     }
 
     timeline.appendChild(line);
+}
+
+function collectWorldAgeHeadings(ages) {
+    const headingsByYear = new Map();
+
+    ages.forEach(age => {
+        const firstYear = age.events[0]?.year;
+
+        if (!firstYear) {
+            return;
+        }
+
+        if (!headingsByYear.has(firstYear)) {
+            headingsByYear.set(firstYear, []);
+        }
+
+        headingsByYear.get(firstYear).push(age);
+    });
+
+    return headingsByYear;
+}
+
+function buildAgeHeading(age) {
+    const heading = document.createElement("section");
+    heading.className = "timeline-age timeline-age--world";
+    heading.innerHTML = `
+        <h2>${age.age}</h2>
+        <p>${age.subtitle}</p>
+    `;
+
+    return heading;
 }
 
 function collectEvents(ages, type) {
