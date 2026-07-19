@@ -1,5 +1,7 @@
 const timeline = document.getElementById("timeline");
-let timelineData = [];
+const regionPicker = document.getElementById("timeline-region");
+let worldTimeline = [];
+let localTimelines = [];
 
 /* ===========================================================
    BUILD
@@ -9,13 +11,18 @@ document.addEventListener("DOMContentLoaded", loadTimeline);
 
 async function loadTimeline() {
     try {
-        const response = await fetch("/exis-emporium/data/timeline/timeline.json");
+        const [worldResponse, localResponse] = await Promise.all([
+            fetch("/exis-emporium/data/timeline/timeline.json"),
+            fetch("/exis-emporium/data/timeline/timeline_local.json")
+        ]);
 
-        if (!response.ok) {
+        if (!worldResponse.ok || !localResponse.ok) {
             throw new Error("Timeline data could not be loaded.");
         }
 
-        timelineData = await response.json();
+        worldTimeline = await worldResponse.json();
+        localTimelines = await localResponse.json();
+        populateRegionPicker();
         buildTimeline();
     } catch (error) {
         timeline.innerHTML = "<p>Timeline data could not be loaded.</p>";
@@ -23,21 +30,60 @@ async function loadTimeline() {
     }
 }
 
+function populateRegionPicker() {
+    regionPicker.innerHTML = "";
+
+    localTimelines.forEach(region => {
+        const option = document.createElement("option");
+        option.value = region.id;
+        option.textContent = region.name;
+        regionPicker.appendChild(option);
+    });
+
+    regionPicker.addEventListener("change", buildTimeline);
+}
+
 function buildTimeline(){
 
     timeline.innerHTML = "";
 
-    // Every era shares this one continuous timeline line.
+    const selectedRegion = localTimelines.find(region => region.id === regionPicker.value);
+    const tracks = document.createElement("div");
+    tracks.className = "timeline-tracks";
+
+    tracks.appendChild(buildTrack("World timeline", worldTimeline, "world"));
+
+    if (selectedRegion) {
+        tracks.appendChild(buildTrack(`${selectedRegion.name} timeline`, selectedRegion.timeline, "local"));
+    }
+
+    timeline.appendChild(tracks);
+}
+
+function buildTrack(title, ages, type) {
+    const track = document.createElement("section");
+    track.className = `timeline-track timeline-track--${type}`;
+
+    const heading = document.createElement("h2");
+    heading.className = "timeline-track-title";
+    heading.textContent = title;
+    track.appendChild(heading);
+
     const line = document.createElement("div");
     line.className = "timeline-line";
 
-    timelineData.forEach(age => {
+    ages.forEach(age => buildAge(age, line));
 
-        buildAge(age, line);
+    if (!ages.some(age => age.events.length)) {
+        const emptyState = document.createElement("div");
+        emptyState.className = "timeline-event timeline-empty";
+        emptyState.textContent = "No regional events have been added yet.";
+        line.appendChild(emptyState);
+    }
 
-    });
+    track.appendChild(line);
 
-    timeline.appendChild(line);
+    return track;
 
 }
 

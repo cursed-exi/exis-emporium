@@ -920,7 +920,7 @@ height:auto;
 
 .timeline-age{
 
-    margin:60px 0 35px 25px;
+    margin:35px 0 25px 25px;
 
 }
 
@@ -985,8 +985,8 @@ height:auto;
 
     position:relative;
 
-    margin-left:90px;      /* was 140px */
-    padding-left:35px;     /* was 40px */
+    margin-left:70px;
+    padding-left:30px;
 
 }
 
@@ -1000,9 +1000,9 @@ height:auto;
     top:0;
     bottom:0;
 
-    width:5px;             /* was 2px */
+    width:5px;
 
-    background:#a8843a;
+    background:var(--timeline-color);
 
 }
 
@@ -1028,7 +1028,7 @@ height:auto;
 
     position:absolute;
 
-    left:-90px;            /* was -140px */
+    left:-70px;
 
     width:70px;            /* was 120px */
 
@@ -1095,7 +1095,7 @@ height:auto;
     min-width:260px;
 
     border:1px solid #444;
-    border-left:5px solid #a8843a;   /* was 4px */
+    border-left:5px solid var(--timeline-color);
 
     background:#0c0c0c;
 
@@ -1105,7 +1105,7 @@ height:auto;
 
 .timeline-event:hover{
 
-    border-left-color:#f2d999;
+    border-left-color:var(--timeline-highlight);
 
     background:#111;
 
@@ -1129,4 +1129,61 @@ height:auto;
 
     line-height:1.5;
 
+}
+
+/* Two independently coloured timelines. */
+.timeline-tracks{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:36px;
+}
+
+.timeline-track{
+    --timeline-color:#a8843a;
+    --timeline-highlight:#f2d999;
+}
+
+.timeline-track--local{
+    --timeline-color:#4b95a8;
+    --timeline-highlight:#8ed9ed;
+}
+
+.timeline-track-title{
+    margin:35px 0 0;
+    color:var(--timeline-highlight);
+    font-size:22px;
+    letter-spacing:2px;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+.timeline-track .timeline-age h2{
+    color:var(--timeline-highlight);
+}
+
+.timeline-track .timeline-year{
+    color:var(--timeline-highlight);
+}
+
+.timeline-region-picker{
+    display:block;
+    margin:28px auto 0;
+    max-width:320px;
+    color:#ddd;
+    font-weight:bold;
+}
+
+.timeline-region-picker select{
+    width:100%;
+    margin-top:7px;
+    padding:8px;
+    border:1px solid #555;
+    background:#0c0c0c;
+    color:#ddd;
+}
+
+@media (max-width:800px){
+    .timeline-tracks{
+        grid-template-columns:1fr;
+    }
 }
