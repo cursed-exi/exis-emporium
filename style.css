@@ -1183,10 +1183,24 @@ height:auto;
     width:95px;
 }
 
-.timeline-event--world{ border-left-color:#a8843a; }
-.timeline-event--local{ border-left-color:#4b95a8; }
+.timeline-event--world{
+    border-left:7px solid #a8843a;
+}
+
+.timeline-event--local{
+    border-left:7px solid #4b95a8;
+}
+
 .timeline-event--world:hover{ border-left-color:#f2d999; }
 .timeline-event--local:hover{ border-left-color:#8ed9ed; }
+
+.timeline-age--world{
+    margin:55px 0 28px 30px;
+}
+
+.timeline-age--world h2{
+    color:#f2d999;
+}
 
 .timeline-event-age{
     margin-bottom:7px;
