@@ -1132,58 +1132,80 @@ height:auto;
 }
 
 /* Two independently coloured timelines. */
-.timeline-tracks{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:36px;
+.timeline-controls{
+    margin:24px 0;
 }
 
-.timeline-track{
-    --timeline-color:#a8843a;
-    --timeline-highlight:#f2d999;
-}
-
-.timeline-track--local{
-    --timeline-color:#4b95a8;
-    --timeline-highlight:#8ed9ed;
-}
-
-.timeline-track-title{
-    margin:35px 0 0;
-    color:var(--timeline-highlight);
-    font-size:22px;
-    letter-spacing:2px;
-    text-align:center;
-    text-transform:uppercase;
-}
-
-.timeline-track .timeline-age h2{
-    color:var(--timeline-highlight);
-}
-
-.timeline-track .timeline-year{
-    color:var(--timeline-highlight);
-}
-
-.timeline-region-picker{
+.timeline-controls label{
     display:block;
-    margin:28px auto 0;
-    max-width:320px;
+    margin-bottom:8px;
     color:#ddd;
     font-weight:bold;
 }
 
-.timeline-region-picker select{
+.timeline-controls .ui-select-wrapper,
+.timeline-controls .ui-select{
     width:100%;
-    margin-top:7px;
-    padding:8px;
-    border:1px solid #555;
-    background:#0c0c0c;
-    color:#ddd;
 }
 
-@media (max-width:800px){
-    .timeline-tracks{
-        grid-template-columns:1fr;
+.timeline-legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin:30px 0 20px 110px;
+    font-weight:bold;
+}
+
+.timeline-legend-world{ color:#f2d999; }
+.timeline-legend-local{ color:#8ed9ed; }
+
+.timeline-line--dual::before{
+    background:#a8843a;
+}
+
+.timeline-line--dual::after{
+    content:"";
+    position:absolute;
+    left:16px;
+    top:0;
+    bottom:0;
+    width:5px;
+    background:#4b95a8;
+}
+
+.timeline-line--dual{
+    margin-left:110px;
+    padding-left:30px;
+}
+
+.timeline-line--dual .timeline-marker{
+    left:-110px;
+    width:95px;
+}
+
+.timeline-event--world{ border-left-color:#a8843a; }
+.timeline-event--local{ border-left-color:#4b95a8; }
+.timeline-event--world:hover{ border-left-color:#f2d999; }
+.timeline-event--local:hover{ border-left-color:#8ed9ed; }
+
+.timeline-event-age{
+    margin-bottom:7px;
+    color:#888;
+    font-size:12px;
+    font-style:italic;
+}
+
+@media (max-width:600px){
+    .timeline-line--dual{
+        margin-left:80px;
+    }
+
+    .timeline-line--dual .timeline-marker{
+        left:-80px;
+        width:65px;
+    }
+
+    .timeline-legend{
+        margin-left:80px;
     }
 }
