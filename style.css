@@ -1179,8 +1179,9 @@ height:auto;
 }
 
 .timeline-line--dual .timeline-marker{
-    left:-110px;
-    width:95px;
+    left:-75px;
+    width:90px;
+    text-align:center;
 }
 
 .timeline-event--world{
@@ -1215,8 +1216,9 @@ height:auto;
     }
 
     .timeline-line--dual .timeline-marker{
-        left:-80px;
-        width:65px;
+        left:-65px;
+        width:70px;
+        text-align:center;
     }
 
     .timeline-legend{
