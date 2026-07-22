@@ -1,5 +1,13 @@
 [
         {
+    "id": "languages",
+    "title": "World of Languages",
+    "date": "2026-07-22",
+    "category": "Worldbuilding",
+    "description": "An article about the use of languages in your TTRPG games.",
+    "link": "../Articles/2026/languages.html"
+    },
+        {
     "id": "exo_frames",
     "title": "EXO Frames",
     "date": "2026-07-15",
