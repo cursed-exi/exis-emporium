@@ -5,7 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     standardCategories.forEach(category => addCategory(category));
     document.getElementById("statblock-form").addEventListener("input", renderPreview);
     document.getElementById("add-section").addEventListener("click", () => addCategory("New Category"));
-    document.getElementById("export-webp").addEventListener("click", exportWebp);
+    document.querySelectorAll("#statblock-form .cr-spin").forEach(button => {
+        button.addEventListener("click", () => {
+            const input = button.closest(".cr-number-wrap").querySelector("input");
+            const step = Number(input.step) || 1;
+            const minimum = Number(input.min) || 0;
+            input.value = Math.max(minimum, Number(input.value || 0) + (button.classList.contains("up") ? step : -step));
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        });
+    });
     renderPreview();
 
     function addCategory(name) {
@@ -61,81 +69,4 @@ function renderPreview() {
         return entries ? `<hr><div class="action"><strong>${escapeHtml(title || "Category")}</strong></div>${entries}` : "";
     }).join("");
     document.getElementById("statblock-preview").innerHTML = `<h4>${escapeHtml(formValue("name") || "Unnamed Creature")}</h4><div class="type">${escapeHtml(formValue("size"))} ${escapeHtml(formValue("type"))}, ${escapeHtml(formValue("alignment"))} | CR ${escapeHtml(formValue("cr"))}</div><hr><p><strong>AC</strong> ${escapeHtml(formValue("ac"))}</p><p><strong>HP</strong> ${escapeHtml(formValue("hp"))}</p><p><strong>Speed</strong> ${escapeHtml(formValue("speed"))}</p>${detailLines}<hr><div class="stats">${scores.map(score => `<div><strong>${score}</strong>${escapeHtml(formValue(score))} (${modifier(formValue(score))})</div>`).join("")}</div>${categories}`;
-}
-
-function createExportLayout(context, width) {
-    const commands = [];
-    const margin = 32;
-    const maxWidth = width - margin * 2;
-    let y = 58;
-    const addText = (text, font, color, gap = 10) => {
-        context.font = font;
-        const words = String(text || "").split(/\s+/).filter(Boolean);
-        let line = "";
-        const lines = [];
-        words.forEach(word => {
-            const candidate = line ? `${line} ${word}` : word;
-            if (line && context.measureText(candidate).width > maxWidth) { lines.push(line); line = word; }
-            else line = candidate;
-        });
-        if (line) lines.push(line);
-        const fontSize = Number(font.match(/(\d+)px/)[1]);
-        lines.forEach(lineText => { commands.push({ kind: "text", text: lineText, font, color, x: margin, y }); y += fontSize + gap; });
-    };
-    const addRule = () => { y += 8; commands.push({ kind: "line", y }); y += 24; };
-
-    addText(formValue("name") || "Unnamed Creature", "bold 42px Arial", "#ffffff", 12);
-    addText(`${formValue("size")} ${formValue("type")}, ${formValue("alignment")} | CR ${formValue("cr")}`, "italic 24px Arial", "#aaaaaa", 12);
-    addRule();
-    [["AC", "ac"], ["HP", "hp"], ["Speed", "speed"], ["Skills", "skills"], ["Resistances", "resistances"], ["Immunities", "immunities"], ["Languages", "languages"], ["Senses", "senses"]].forEach(([label, key]) => {
-        const value = formValue(key);
-        if (value) addText(`${label}  ${value}`, "24px Arial", "#dddddd");
-    });
-    addRule();
-    addText(["STR", "DEX", "CON", "INT", "WIS", "CHA"].map(score => `${score} ${formValue(score)} (${modifier(formValue(score))})`).join("    "), "bold 21px Arial", "#ffffff", 14);
-    [...document.querySelectorAll(".builder-entry-group")].forEach(group => {
-        const entries = [...group.querySelectorAll(".builder-entry")].map(entry => ({ name: entry.querySelector(".entry-name").value.trim(), description: entry.querySelector(".entry-description").value.trim() })).filter(entry => entry.name || entry.description);
-        if (!entries.length) return;
-        addRule();
-        addText(group.querySelector(".category-name").value.trim() || "Category", "bold 28px Arial", "#ffffff", 12);
-        entries.forEach(entry => addText(`${entry.name || "Entry"}.  ${entry.description}`, "24px Arial", "#dddddd"));
-    });
-    return { commands, height: y + 30 };
-}
-
-function exportWebp() {
-    const status = document.getElementById("export-status");
-    const width = 1000;
-    const layoutCanvas = document.createElement("canvas");
-    const layout = createExportLayout(layoutCanvas.getContext("2d"), width);
-    const canvas = document.createElement("canvas");
-    canvas.width = width * 2;
-    canvas.height = Math.ceil(layout.height * 2);
-    const context = canvas.getContext("2d");
-    context.scale(2, 2);
-    context.fillStyle = "#0f0f0f";
-    context.fillRect(0, 0, width, layout.height);
-    context.strokeStyle = "#555";
-    context.lineWidth = 2;
-    context.strokeRect(1, 1, width - 2, layout.height - 2);
-    layout.commands.forEach(command => {
-        if (command.kind === "line") {
-            context.strokeStyle = "#444";
-            context.beginPath(); context.moveTo(32, command.y); context.lineTo(width - 32, command.y); context.stroke();
-        } else {
-            context.font = command.font;
-            context.fillStyle = command.color;
-            context.fillText(command.text, command.x, command.y);
-        }
-    });
-    status.textContent = "Preparing WebP...";
-    canvas.toBlob(blob => {
-        if (!blob) { status.textContent = "Your browser could not create a WebP image."; return; }
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = `${(formValue("name") || "statblock").replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase() || "statblock"}.webp`;
-        link.click();
-        setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-        status.textContent = "WebP downloaded.";
-    }, "image/webp", 0.95);
 }
