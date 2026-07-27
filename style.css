@@ -295,18 +295,18 @@ footer {
 
 .builder-layout {
     display: grid;
-    grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 20px;
     align-items: start;
 }
 
-.builder-form { margin: 0; }
+.builder-form { margin: 0; max-height: 760px; overflow-y: auto; }
 .builder-form h3 { margin: 8px 0 12px; }
 .builder-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .builder-grid label { display: grid; gap: 5px; color: #bbb; font-size: 13px; }
 .ability-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .builder-grid .ui-input, .builder-entry .ui-input, .builder-category-title .ui-input { width: 100%; box-sizing: border-box; }
-.builder-entry-group { border-top: 1px solid #444; margin-top: 18px; padding-top: 14px; }
+.builder-entry-group { border-top: 1px solid #444; margin-top: 18px; padding: 14px 2px 0; }
 .builder-category-title { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
 .builder-category-title .category-name { font-weight: bold; }
 .builder-entry { display: grid; grid-template-columns: minmax(120px, 1fr) 2fr auto; gap: 8px; margin: 8px 0; align-items: start; }
@@ -315,6 +315,14 @@ footer {
 .builder-preview-heading h3 { margin: 0 0 10px; }
 .builder-status { min-height: 20px; color: #aaa; font-size: 13px; }
 .builder-statblock { min-height: 220px; }
+
+/* Builder scrollbars match the dark, outlined control style used across the site. */
+.builder-form { scrollbar-color: #777 #0d0d0d; scrollbar-width: thin; }
+.builder-form::-webkit-scrollbar { width: 12px; }
+.builder-form::-webkit-scrollbar-track { background: #0d0d0d; border-left: 1px solid #444; }
+.builder-form::-webkit-scrollbar-thumb { background: #555; border: 2px solid #0d0d0d; }
+.builder-form::-webkit-scrollbar-thumb:hover { background: #777; }
+.builder-form::-webkit-scrollbar-button:single-button { background-color: #111; border-left: 1px solid #444; height: 12px; }
 
 @media (max-width: 760px) {
     .builder-layout { grid-template-columns: 1fr; }
