@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     standardCategories.forEach(category => addCategory(category));
     document.getElementById("statblock-form").addEventListener("input", renderPreview);
     document.getElementById("add-section").addEventListener("click", () => addCategory("New Category"));
+    document.getElementById("download-statblock").addEventListener("click", downloadStatblockImage);
     document.querySelectorAll("#statblock-form .cr-spin").forEach(button => {
         button.addEventListener("click", () => {
             const input = button.closest(".cr-number-wrap").querySelector("input");
@@ -69,4 +70,28 @@ function renderPreview() {
         return entries ? `<hr><div class="action"><strong>${escapeHtml(title || "Category")}</strong></div>${entries}` : "";
     }).join("");
     document.getElementById("statblock-preview").innerHTML = `<h4>${escapeHtml(formValue("name") || "Unnamed Creature")}</h4><div class="type">${escapeHtml(formValue("size"))} ${escapeHtml(formValue("type"))}, ${escapeHtml(formValue("alignment"))} | CR ${escapeHtml(formValue("cr"))}</div><hr><p><strong>AC</strong> ${escapeHtml(formValue("ac"))}</p><p><strong>HP</strong> ${escapeHtml(formValue("hp"))}</p><p><strong>Speed</strong> ${escapeHtml(formValue("speed"))}</p>${detailLines}<hr><div class="stats">${scores.map(score => `<div><strong>${score}</strong>${escapeHtml(formValue(score))} (${modifier(formValue(score))})</div>`).join("")}</div>${categories}`;
+}
+
+async function downloadStatblockImage() {
+    const button = document.getElementById("download-statblock");
+    const originalLabel = button.textContent;
+    button.disabled = true;
+    button.textContent = "Preparing image...";
+    try {
+        const canvas = await window.html2canvas(document.getElementById("statblock-preview"), {
+            backgroundColor: "#0f0f0f",
+            scale: 2,
+            useCORS: true
+        });
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = `${(formValue("name") || "statblock").replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase() || "statblock"}.png`;
+        link.click();
+    } catch (error) {
+        console.error("Statblock image export failed:", error);
+        alert("The image exporter could not be loaded. Please check your internet connection and try again.");
+    } finally {
+        button.disabled = false;
+        button.textContent = originalLabel;
+    }
 }
