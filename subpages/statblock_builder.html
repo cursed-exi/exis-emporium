@@ -17,11 +17,11 @@
 <main>
 <article class="post">
     <h2>Statblock Builder</h2>
-    <div class="meta">Sadly, I'm not good enough to add the img or statblock export... yet..</div>
+    <div class="meta">Build a creature card using the same categories as the archive.</div>
 
     <div class="builder-layout">
         <section class="builder-preview-panel">
-            <div class="builder-preview-heading"><h3>Preview</h3></div>
+            <div class="builder-preview-heading"><h3>Preview</h3><button type="button" id="download-statblock" class="ui-button">Download PNG</button></div>
             <div id="statblock-preview" class="statblock builder-statblock"></div>
         </section>
 
@@ -66,12 +66,23 @@
             <button type="button" id="add-section" class="ui-button">Add category</button>
         </form>
     </div>
+	
+	    <div class="license-box">
+        <strong>Library License</strong>
+        <p>
+            Image export on this page uses <a href="https://github.com/niklasvh/html2canvas">html2canvas</a>
+            by Niklas von Hertzen, licensed under the
+            <a href="https://github.com/niklasvh/html2canvas/blob/master/LICENSE">MIT License</a>.
+        </p>
+    </div>
+	
 </article>
 </main>
 <aside id="sidebar"></aside>
 </div>
 
 <footer><p>Exi's Emporium © 2026 | ExiFlow</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous"></script>
 <script src="../toolscripts/statblock_builder.js"></script>
 <script src="../script.js"></script>
 </body>
