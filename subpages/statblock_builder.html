@@ -17,9 +17,14 @@
 <main>
 <article class="post">
     <h2>Statblock Builder</h2>
-    <div class="meta">Create a creature card and save it as a WebP image.</div>
+    <div class="meta">Build a creature card using the same categories as the archive.</div>
 
     <div class="builder-layout">
+        <section class="builder-preview-panel">
+            <div class="builder-preview-heading"><h3>Preview</h3></div>
+            <div id="statblock-preview" class="statblock builder-statblock"></div>
+        </section>
+
         <form id="statblock-form" class="note-box builder-form">
             <h3>Creature details</h3>
             <div class="builder-grid">
@@ -28,19 +33,24 @@
                 <label>Size<input class="ui-input" name="size" value="Medium"></label>
                 <label>Type<input class="ui-input" name="type" value="Humanoid"></label>
                 <label>Alignment<input class="ui-input" name="alignment" value="Unaligned"></label>
-                <label>Armor Class<input class="ui-input" name="ac" value="12"></label>
+                <label>Armor Class
+                    <div class="cr-number-wrap">
+                        <input class="ui-input cr-input" name="ac" type="number" min="0" value="12">
+                        <div class="cr-spinner"><button type="button" class="cr-spin up" aria-label="Increase Armor Class">&#9650;</button><button type="button" class="cr-spin down" aria-label="Decrease Armor Class">&#9660;</button></div>
+                    </div>
+                </label>
                 <label>Hit Points<input class="ui-input" name="hp" value="22 (4d8 + 4)"></label>
                 <label>Speed<input class="ui-input" name="speed" value="30 ft."></label>
             </div>
 
             <h3>Ability scores</h3>
             <div class="builder-grid ability-grid">
-                <label>STR<input class="ui-input" name="STR" type="number" value="10"></label>
-                <label>DEX<input class="ui-input" name="DEX" type="number" value="10"></label>
-                <label>CON<input class="ui-input" name="CON" type="number" value="10"></label>
-                <label>INT<input class="ui-input" name="INT" type="number" value="10"></label>
-                <label>WIS<input class="ui-input" name="WIS" type="number" value="10"></label>
-                <label>CHA<input class="ui-input" name="CHA" type="number" value="10"></label>
+                <label>STR<div class="cr-number-wrap"><input class="ui-input cr-input" name="STR" type="number" min="0" value="10"><div class="cr-spinner"><button type="button" class="cr-spin up" aria-label="Increase Strength">&#9650;</button><button type="button" class="cr-spin down" aria-label="Decrease Strength">&#9660;</button></div></div></label>
+                <label>DEX<div class="cr-number-wrap"><input class="ui-input cr-input" name="DEX" type="number" min="0" value="10"><div class="cr-spinner"><button type="button" class="cr-spin up" aria-label="Increase Dexterity">&#9650;</button><button type="button" class="cr-spin down" aria-label="Decrease Dexterity">&#9660;</button></div></div></label>
+                <label>CON<div class="cr-number-wrap"><input class="ui-input cr-input" name="CON" type="number" min="0" value="10"><div class="cr-spinner"><button type="button" class="cr-spin up" aria-label="Increase Constitution">&#9650;</button><button type="button" class="cr-spin down" aria-label="Decrease Constitution">&#9660;</button></div></div></label>
+                <label>INT<div class="cr-number-wrap"><input class="ui-input cr-input" name="INT" type="number" min="0" value="10"><div class="cr-spinner"><button type="button" class="cr-spin up" aria-label="Increase Intelligence">&#9650;</button><button type="button" class="cr-spin down" aria-label="Decrease Intelligence">&#9660;</button></div></div></label>
+                <label>WIS<div class="cr-number-wrap"><input class="ui-input cr-input" name="WIS" type="number" min="0" value="10"><div class="cr-spinner"><button type="button" class="cr-spin up" aria-label="Increase Wisdom">&#9650;</button><button type="button" class="cr-spin down" aria-label="Decrease Wisdom">&#9660;</button></div></div></label>
+                <label>CHA<div class="cr-number-wrap"><input class="ui-input cr-input" name="CHA" type="number" min="0" value="10"><div class="cr-spinner"><button type="button" class="cr-spin up" aria-label="Increase Charisma">&#9650;</button><button type="button" class="cr-spin down" aria-label="Decrease Charisma">&#9660;</button></div></div></label>
             </div>
 
             <h3>Optional details</h3>
@@ -55,15 +65,6 @@
             <div id="entry-groups"></div>
             <button type="button" id="add-section" class="ui-button">Add category</button>
         </form>
-
-        <section class="builder-preview-panel">
-            <div class="builder-preview-heading">
-                <h3>Preview</h3>
-                <button type="button" id="export-webp" class="ui-button">Download WebP</button>
-            </div>
-            <div id="export-status" class="builder-status" aria-live="polite"></div>
-            <div id="statblock-preview" class="statblock builder-statblock"></div>
-        </section>
     </div>
 </article>
 </main>
