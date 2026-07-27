@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Statblock Builder</title>
+<link rel="icon" href="/exis-emporium/img/emporium_icon.webp" type="image/webp">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+    <h1><a href="../index.html">Exi's Emporium</a></h1>
+    <p>The Land of the Paper Lantern Sage</p>
+</header>
+
+<div class="container">
+<main>
+<article class="post">
+    <h2>Statblock Builder</h2>
+    <div class="meta">Create a creature card and save it as a WebP image.</div>
+
+    <div class="builder-layout">
+        <form id="statblock-form" class="note-box builder-form">
+            <h3>Creature details</h3>
+            <div class="builder-grid">
+                <label>Name<input class="ui-input" name="name" value="Unnamed Creature"></label>
+                <label>Challenge rating<input class="ui-input" name="cr" value="1"></label>
+                <label>Size<input class="ui-input" name="size" value="Medium"></label>
+                <label>Type<input class="ui-input" name="type" value="Humanoid"></label>
+                <label>Alignment<input class="ui-input" name="alignment" value="Unaligned"></label>
+                <label>Armor Class<input class="ui-input" name="ac" value="12"></label>
+                <label>Hit Points<input class="ui-input" name="hp" value="22 (4d8 + 4)"></label>
+                <label>Speed<input class="ui-input" name="speed" value="30 ft."></label>
+            </div>
+
+            <h3>Ability scores</h3>
+            <div class="builder-grid ability-grid">
+                <label>STR<input class="ui-input" name="STR" type="number" value="10"></label>
+                <label>DEX<input class="ui-input" name="DEX" type="number" value="10"></label>
+                <label>CON<input class="ui-input" name="CON" type="number" value="10"></label>
+                <label>INT<input class="ui-input" name="INT" type="number" value="10"></label>
+                <label>WIS<input class="ui-input" name="WIS" type="number" value="10"></label>
+                <label>CHA<input class="ui-input" name="CHA" type="number" value="10"></label>
+            </div>
+
+            <h3>Optional details</h3>
+            <div class="builder-grid">
+                <label>Skills<input class="ui-input" name="skills" placeholder="Perception +3"></label>
+                <label>Resistances<input class="ui-input" name="resistances" placeholder="fire; cold"></label>
+                <label>Immunities<input class="ui-input" name="immunities" placeholder="poison"></label>
+                <label>Languages<input class="ui-input" name="languages" placeholder="Common"></label>
+                <label>Senses<input class="ui-input" name="senses" placeholder="darkvision 60 ft."></label>
+            </div>
+
+            <div id="entry-groups"></div>
+            <button type="button" id="add-section" class="ui-button">Add category</button>
+        </form>
+
+        <section class="builder-preview-panel">
+            <div class="builder-preview-heading">
+                <h3>Preview</h3>
+                <button type="button" id="export-webp" class="ui-button">Download WebP</button>
+            </div>
+            <div id="export-status" class="builder-status" aria-live="polite"></div>
+            <div id="statblock-preview" class="statblock builder-statblock"></div>
+        </section>
+    </div>
+</article>
+</main>
+<aside id="sidebar"></aside>
+</div>
+
+<footer><p>Exi's Emporium © 2026 | ExiFlow</p></footer>
+<script src="../toolscripts/statblock_builder.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>
