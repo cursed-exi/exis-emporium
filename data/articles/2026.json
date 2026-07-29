@@ -1,5 +1,13 @@
 [
         {
+    "id": "reactive_creatures",
+    "title": "Reactive Creatures Design",
+    "date": "2026-07-29",
+    "category": "Mechanics Discussion",
+    "description": "An article about the reactive creatures design.",
+    "link": "../Articles/2026/reactive_creatures.html"
+    },
+        {
     "id": "languages",
     "title": "World of Languages",
     "date": "2026-07-22",
