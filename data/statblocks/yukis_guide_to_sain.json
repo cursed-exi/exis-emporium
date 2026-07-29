@@ -64,5 +64,70 @@
         "desc": "Earl summons a beast from the Ghostsea to devour his opponents. Each creature within 20 feet of him must make a DC17 Dexterity Saving Throw or take 3d10 necrotic damage and become Sluggish until the end of their next turn. As a maw emerges from the ground covering these unlucky enough not to dodge that in the water flames of the Ghostsea."
       }
     ]
+  },
+   {
+    "id": "vampire_brute",
+    "name": "Vampire Brute",
+    "image": "/exis-emporium/img/statblocks/vampire_brute.webp",
+
+    "size": "Medium",
+    "type": "Undead (Vampire)",
+    "alignment": "Lawful Evil",
+    "ac": 14,
+    "hp": "107 (8d12+55)",
+    "speed": "40 ft.",
+    "cr": "4",
+
+    "stats": {
+      "STR": 20,
+      "DEX": 14,
+      "CON": 16,
+      "INT": 8,
+      "WIS": 8,
+      "CHA": 11
+    },
+
+    "skills": "Atlethics +7, Intimidation +7",
+    "languages": "Common, High Common",
+    "senses": "darkvision 60 ft.",
+
+    "traits": [
+      {
+        "name": "Vampiric Nature",
+        "desc": "The Vampire Brute has a great aversion to radiant damage. They take an additional 1d10 damage if the damage type if radiant and become enraged. <br><br> When Enraged all attacks they make are made with advantage, but all attacks     against them also have advantage."
+      },
+      {
+        "name": "Multiattack",
+        "desc": "The Vampire brute makes 3 attacks as a part of an attack action: 2 with theyr punches and 1 with bite or horns."
+      }
+    ],
+
+    "actions": [
+      {
+        "name": "Punch",
+        "desc": "Melee weapon attack: +7 to hit, reach 5ft., one target, hit: 1d10+5 bludgeoning."
+      },
+      {
+        "name": "Bite (Recharge 5-6)",
+        "desc": "Melee weapon attack: +7 to hit, reach 5ft., one target, hit: 1d6+5 slashing and 1d6 necrotic.<p>The Vampire Brute heals for the amount of necrotic damage dealt.</p>"
+      },
+      {
+        "name": "Horns",
+        "desc": "Melee weapon attack: +7 to hit, reach 10ft., one target, hit: 1d8+5 piercing."
+      }
+    ],
+
+    "bonus": [
+      {
+        "name": "Batshot",
+        "desc": "Ranged weapon attack: +7 to hit, reach 60ft., one target, hit: 1d6+5 necrotic.<p>The Vampire Brute creates an etherial bat flying towards a target within 60 feet.</p>"
+      }
+    ],
+    "reactions": [
+      {
+        "name": "Exploit",
+        "desc": "When hit by an attack the Vampire Brute can exploit the opening, by making a melee punch attack, that deals 1d6 damage instead."
+      }
+    ]
   }
 ]
