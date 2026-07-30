@@ -726,6 +726,93 @@ tr:hover {
     pointer-events: none;
 }
 
+/* ===== Threads of Fate ===== */
+
+/*
+   Keep the thread card independent of the global image rule above.  Without
+   these dimensions the source artwork expands to the full main-column width.
+*/
+.thread-view {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+}
+
+#card-container {
+    width: min(100%, 380px);
+    perspective: 1200px;
+}
+
+.thread-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 5;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.55s ease;
+}
+
+.thread-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.thread-face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border: 1px solid #555;
+    background: #0a0a0a;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.thread-front img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+}
+
+.thread-back {
+    box-sizing: border-box;
+    padding: 22px;
+    overflow-y: auto;
+    transform: rotateY(180deg);
+}
+
+.thread-back h3 {
+    margin: 0 0 18px;
+    color: #f2d999;
+    font-size: 22px;
+}
+
+.strand-number {
+    margin: 0 0 18px;
+    color: #f2d999;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.thread-back hr {
+    border: 0;
+    border-top: 1px solid #555;
+    margin: 18px 0;
+}
+
+.thread-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+@media (max-width: 500px) {
+    #card-container {
+        width: min(100%, 340px);
+    }
+}
+
 /* cr calc */
 .cr-grid{
 display:grid;
