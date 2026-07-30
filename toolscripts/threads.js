@@ -169,8 +169,14 @@ function render() {
 
             <h3>${thread.name}</h3>
 
-            <div class="strand-number">
-                ${strand.strand}
+            <div class="strand-heading">
+                <div class="strand-number">
+                    ${strand.strand}
+                </div>
+
+                <div class="strand-title">
+                    ${strand.content}
+                </div>
             </div>
 
             <p>
@@ -184,8 +190,6 @@ function render() {
             </p>
 
             <hr>
-
-            ${strand.content}
 
         </div>
 
