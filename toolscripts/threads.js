@@ -155,13 +155,20 @@ function render() {
 
     <div
         class="thread-card ${flipped ? "flipped" : ""}"
-        id="thread-card">
+        id="thread-card"
+        role="button"
+        tabindex="0"
+        aria-label="Flip the ${thread.name} thread card">
 
         <div class="thread-face thread-front">
 
-            <img
-                src="${thread.cardImage}"
-                alt="${thread.name}">
+            <p class="thread-card-label">Thread of Fate</p>
+            <h3>${thread.name}</h3>
+            <div class="strand-number">
+                Strand ${strand.strand}
+            </div>
+            <p>Levels ${strand.levels}</p>
+            <p class="thread-card-hint">Click to reveal the strand.</p>
 
         </div>
 
@@ -198,6 +205,20 @@ function render() {
         .addEventListener(
             "click",
             toggleFlip
+        );
+
+    document
+        .getElementById("thread-card")
+        .addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleFlip();
+                }
+
+            }
         );
 
 }
