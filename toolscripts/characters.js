@@ -34,22 +34,24 @@ function renderCharacters(directory, regions) {
         const grid = document.createElement("div");
         grid.className = "character-grid";
 
-        (region.characters || []).forEach(character => {
-            const tile = document.createElement("a");
-            tile.className = "character-tile";
-            tile.href = `../characters/${character.page}`;
+        [...(region.characters || [])]
+            .sort((first, second) => first.name.localeCompare(second.name))
+            .forEach(character => {
+                const tile = document.createElement("a");
+                tile.className = "character-tile";
+                tile.href = `../characters/${character.page}`;
 
-            const name = document.createElement("span");
-            name.className = "character-name";
-            name.textContent = character.name;
+                const name = document.createElement("span");
+                name.className = "character-name";
+                name.textContent = character.name;
 
-            const description = document.createElement("span");
-            description.className = "character-description";
-            description.textContent = character.description;
+                const description = document.createElement("span");
+                description.className = "character-description";
+                description.textContent = character.description;
 
-            tile.append(name, description);
-            grid.appendChild(tile);
-        });
+                tile.append(name, description);
+                grid.appendChild(tile);
+            });
 
         section.appendChild(grid);
         fragment.appendChild(section);
