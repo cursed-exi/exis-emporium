@@ -1,0 +1,37 @@
+{
+  "regions": [
+    {
+      "name": "Emberreach",
+      "characters": [
+        { "name": "Aria Vale", "description": "A travelling cartographer with an eye for hidden paths. She never leaves a mystery unmarked.", "page": "aria-vale.html" },
+        { "name": "Bren Ashford", "description": "A former soldier tending a quiet roadside forge. His old allegiances are harder to put down than a hammer.", "page": "bren-ashford.html" },
+        { "name": "Celia Voss", "description": "A sharp-tongued antiquarian who collects forbidden stories. She is certain the past is still listening.", "page": "celia-voss.html" },
+        { "name": "Dorian Finch", "description": "A charming courier who knows every back road in Emberreach. He always arrives on time, except when it matters most.", "page": "dorian-finch.html" },
+        { "name": "Elara Quill", "description": "A young scholar chasing the source of a recurring dream. Her notebooks contain maps to places that should not exist.", "page": "elara-quill.html" },
+        { "name": "Felix Rowan", "description": "A soft-spoken innkeeper with a gift for remembering faces. His hospitality conceals a watchful mind.", "page": "felix-rowan.html" }
+      ]
+    },
+    {
+      "name": "Mistwood",
+      "characters": [
+        { "name": "Gwen Thorne", "description": "A reclusive herbalist who can read the moods of the forest. She trusts roots and rain more than people.", "page": "gwen-thorne.html" },
+        { "name": "Halden Rusk", "description": "A veteran ranger pursuing a creature from an old folktale. Each trail seems to lead him closer to home.", "page": "halden-rusk.html" },
+        { "name": "Isla Morrow", "description": "A musician whose songs carry strange memories through the trees. She is searching for the voice that answers back.", "page": "isla-morrow.html" },
+        { "name": "Jorek Fenn", "description": "A cheerful trapper with an improbable talent for survival. He treats every danger as another good story.", "page": "jorek-fenn.html" },
+        { "name": "Kira Sable", "description": "A quiet hunter who protects the paths around her village. Few know why she fears the sound of bells.", "page": "kira-sable.html" },
+        { "name": "Lucan Wren", "description": "A wandering priest offering comfort to anyone who needs it. His faith is strongest when no one is watching.", "page": "lucan-wren.html" }
+      ]
+    },
+    {
+      "name": "Tidefall",
+      "characters": [
+        { "name": "Maren Cole", "description": "A daring sailor who hears warnings in the tide. She is looking for a ship that vanished years ago.", "page": "maren-cole.html" },
+        { "name": "Nico Reed", "description": "A dockside fixer with friends in every tavern. He can find anything, provided you do not ask where it came from.", "page": "nico-reed.html" },
+        { "name": "Orla Vane", "description": "A lighthouse keeper devoted to an impossible beacon. Every night, she waits for a light beyond the horizon.", "page": "orla-vane.html" },
+        { "name": "Perrin Crow", "description": "A retired pirate who claims to have buried every treasure he stole. His map collection tells a different tale.", "page": "perrin-crow.html" },
+        { "name": "Quinn Hale", "description": "A fisher who knows the reefs better than any chartmaker. Their calm vanishes whenever the sea turns green.", "page": "quinn-hale.html" },
+        { "name": "Rosa Lynn", "description": "A bright-eyed apprentice mage fascinated by storms. She is convinced lightning has a language of its own.", "page": "rosa-lynn.html" }
+      ]
+    }
+  ]
+}
