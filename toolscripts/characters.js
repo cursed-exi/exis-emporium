@@ -12,8 +12,20 @@ async function loadCharacters() {
             throw new Error(`Could not load character data: ${response.status}`);
         }
 
-        const data = await response.json();
-        renderCharacters(directory, data.regions || []);
+        const manifest = await response.json();
+        const regions = await Promise.all(
+            (manifest.sources || []).map(async source => {
+                const sourceResponse = await fetch(`../data/characters/${source}`);
+
+                if (!sourceResponse.ok) {
+                    throw new Error(`Could not load character source: ${source}`);
+                }
+
+                return sourceResponse.json();
+            })
+        );
+
+        renderCharacters(directory, regions);
     } catch (error) {
         console.error(error);
         directory.textContent = "Character data could not be loaded.";
@@ -39,7 +51,7 @@ function renderCharacters(directory, regions) {
             .forEach(character => {
                 const tile = document.createElement("a");
                 tile.className = "character-tile";
-                tile.href = `../characters/${character.page}`;
+                tile.href = `../${character.page}`;
 
                 const name = document.createElement("span");
                 name.className = "character-name";
