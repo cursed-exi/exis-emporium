@@ -1,6 +1,6 @@
 {
   "sources": [
-    "regions/emberreach.json",
+    "regions/lian.json",
     "regions/mistwood.json",
     "regions/tidefall.json"
   ]
