@@ -1,0 +1,11 @@
+{
+  "name": "Emberreach",
+  "characters": [
+    { "name": "Aria Vale", "description": "A travelling cartographer with an eye for hidden paths. She never leaves a mystery unmarked.", "page": "characters/aria-vale.html" },
+    { "name": "Bren Ashford", "description": "A former soldier tending a quiet roadside forge. His old allegiances are harder to put down than a hammer.", "page": "characters/bren-ashford.html" },
+    { "name": "Celia Voss", "description": "A sharp-tongued antiquarian who collects forbidden stories. She is certain the past is still listening.", "page": "characters/celia-voss.html" },
+    { "name": "Dorian Finch", "description": "A charming courier who knows every back road in Emberreach. He always arrives on time, except when it matters most.", "page": "characters/dorian-finch.html" },
+    { "name": "Elara Quill", "description": "A young scholar chasing the source of a recurring dream. Her notebooks contain maps to places that should not exist.", "page": "characters/elara-quill.html" },
+    { "name": "Felix Rowan", "description": "A soft-spoken innkeeper with a gift for remembering faces. His hospitality conceals a watchful mind.", "page": "characters/felix-rowan.html" }
+  ]
+}

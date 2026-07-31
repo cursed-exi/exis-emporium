@@ -1,0 +1,11 @@
+{
+  "name": "Mistwood",
+  "characters": [
+    { "name": "Gwen Thorne", "description": "A reclusive herbalist who can read the moods of the forest. She trusts roots and rain more than people.", "page": "characters/gwen-thorne.html" },
+    { "name": "Halden Rusk", "description": "A veteran ranger pursuing a creature from an old folktale. Each trail seems to lead him closer to home.", "page": "characters/halden-rusk.html" },
+    { "name": "Isla Morrow", "description": "A musician whose songs carry strange memories through the trees. She is searching for the voice that answers back.", "page": "characters/isla-morrow.html" },
+    { "name": "Jorek Fenn", "description": "A cheerful trapper with an improbable talent for survival. He treats every danger as another good story.", "page": "characters/jorek-fenn.html" },
+    { "name": "Kira Sable", "description": "A quiet hunter who protects the paths around her village. Few know why she fears the sound of bells.", "page": "characters/kira-sable.html" },
+    { "name": "Lucan Wren", "description": "A wandering priest offering comfort to anyone who needs it. His faith is strongest when no one is watching.", "page": "characters/lucan-wren.html" }
+  ]
+}
