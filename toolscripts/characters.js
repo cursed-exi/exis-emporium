@@ -6,7 +6,7 @@ async function loadCharacters() {
     const directory = document.getElementById("character-directory");
 
     try {
-        const response = await fetch("/exis-emporium//characters/characters.json");
+        const response = await fetch("/exis-emporium/data/characters/characters.json");
 
         if (!response.ok) {
             throw new Error(`Could not load character data: ${response.status}`);
