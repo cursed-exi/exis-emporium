@@ -51,7 +51,7 @@ function renderCharacters(directory, regions) {
             .forEach(character => {
                 const tile = document.createElement("a");
                 tile.className = "character-tile";
-                tile.href = `../${character.page}`;
+                tile.href = `../../${character.page}`;
 
                 const name = document.createElement("span");
                 name.className = "character-name";
