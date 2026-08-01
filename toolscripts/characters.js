@@ -15,7 +15,7 @@ async function loadCharacters() {
         const manifest = await response.json();
         const regions = await Promise.all(
             (manifest.sources || []).map(async source => {
-                const sourceResponse = await fetch(`../data/characters/${source}`);
+                const sourceResponse = await fetch(`./exis-emporium/data/characters/${source}`);
 
                 if (!sourceResponse.ok) {
                     throw new Error(`Could not load character source: ${source}`);
@@ -51,7 +51,7 @@ function renderCharacters(directory, regions) {
             .forEach(character => {
                 const tile = document.createElement("a");
                 tile.className = "character-tile";
-                tile.href = `../../${character.page}`;
+                tile.href = `./exis-emporium/${character.page}`;
 
                 const name = document.createElement("span");
                 name.className = "character-name";
