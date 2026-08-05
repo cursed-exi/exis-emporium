@@ -1,5 +1,13 @@
 [
         {
+    "id": "in_defense_of_tropes",
+    "title": "In Defense of Tropes",
+    "date": "2026-08-05",
+    "category": "Worldbuilding",
+    "description": "An article about the tropes and why I think they are important.",
+    "link": "../Articles/2026/in_defense_of_tropes.html"
+    },
+        {
     "id": "reactive_creatures",
     "title": "Reactive Creatures Design",
     "date": "2026-07-29",
