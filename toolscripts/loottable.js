@@ -203,6 +203,98 @@ const banners = {
             }
         ]
     },
+	 mythic_banner: {
+        name: "Monkey King's Stash",
+        image: "../img/banners/Blood_reverance.webp",
+        flavor: "A Strange chest underneath the mountain.",
+        color: "#7deb34",
+        items: [
+			{
+                name: "30g",
+                rarity: "Common",
+                stars: 2,
+                chance: 60,
+                desc: `<p>Pile of Gold Coins</p>`
+            },
+			{
+                name: "Insence",
+                rarity: "Common",
+                stars: 2,
+                chance: 60,
+                desc: `<p>A good smelling mix of insence.</p>`
+            },
+			{
+                name: "Writing Implements",
+                rarity: "Common",
+                stars: 2,
+                chance: 60,
+                desc: `<p>Paper, ink and quill.</p>`
+            },
+			{
+                name: "10g",
+                rarity: "Common",
+                stars: 2,
+                chance: 120,
+                desc: `<p>A pouch containing 10 gold pieces.</p>`
+            },
+			{
+                name: "Ornate Pot",
+                rarity: "Common",
+                stars: 2,
+                chance: 20,
+                desc: `<p>With an image of the Monkey King himspelf.</p>`
+            },
+            {
+                name: "Masterwork Weapon",
+                rarity: "Uncommon",
+                stars: 3,
+                chance: 10,
+                desc: `<p>A +1 weapon of random choice.</p>`
+            },
+			{
+                name: "Sun Lash",
+                rarity: "Uncommon",
+                stars: 3,
+                chance: 10,
+                desc: `<p>This whip deals 2d4 radiant damage instead of it's normal damage.</p>`
+            },
+			{
+                name: "50g",
+                rarity: "Uncommon",
+                stars: 3,
+                chance: 40,
+                desc: `<p>A small string with 50 gold pieces hanged on it.</p>`
+            },
+			{
+                name: "Rough Emerald",
+                rarity: "Uncommon",
+                stars: 3,
+                chance: 40,
+                desc: `<p>A small rough emerald worth 60 gold pieces.</p>`
+            },
+			{
+                name: "The Mask of Many Faces",
+                rarity: "Rare",
+                stars: 4,
+                chance: 10,
+                desc: `<p>Once per day you may alter the appearance of your face. This feels magical, yet horrific.</p>`
+            },
+			{
+                name: "Gold Bar",
+                rarity: "Rare",
+                stars: 4,
+                chance: 10,
+                desc: `<p>A gold bar worth 200 gold pieces.</p>`
+            },
+            {
+                name: "Monkey King's Staff",
+                rarity: "Legendary",
+                stars: 5,
+                chance: 5,
+                desc: `<p>Or at least one resembling it.</p>`
+            },
+        ]
+    },
 
 /*
     ethereal_banner: {
