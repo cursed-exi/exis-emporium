@@ -203,7 +203,7 @@ const banners = {
             }
         ]
     },
-	 mythic_banner: {
+	 monkey_kings_banner: {
         name: "Monkey King's Stash",
         image: "../img/banners/Blood_reverance.webp",
         flavor: "A Strange chest underneath the mountain.",
