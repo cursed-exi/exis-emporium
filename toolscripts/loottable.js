@@ -205,7 +205,7 @@ const banners = {
     },
 	 monkey_kings_banner: {
         name: "Monkey King's Stash",
-        image: "../img/banners/Blood_reverance.webp",
+        image: "../img/banners/monkey_kings_stash.webp",
         flavor: "A Strange chest underneath the mountain.",
         color: "#7deb34",
         items: [
