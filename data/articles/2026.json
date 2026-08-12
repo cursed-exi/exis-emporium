@@ -1,5 +1,13 @@
 [
         {
+    "id": "the_scheming_of_the_throne",
+    "title": "The Scheming of the Throne",
+    "date": "2026-08-12",
+    "category": "Land of Sain",
+    "description": "An article about the region of the Throne of the Land of Sain.",
+    "link": "../Articles/2026/the_scheming_of_the_throne.html"
+    },
+        {
     "id": "in_defense_of_tropes",
     "title": "In Defense of Tropes",
     "date": "2026-08-05",
