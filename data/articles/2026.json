@@ -1,5 +1,13 @@
 [
         {
+    "id": "in_due_time",
+    "title": "In Due Time",
+    "date": "2026-09-20",
+    "category": "Land of Sain",
+    "description": "An article about my regretful experience and what you can learn from it.",
+    "link": "../Articles/2026/in_due_time.html"
+    },
+        {
     "id": "scheming_of_the_throne",
     "title": "The Scheming of the Throne",
     "date": "2026-08-12",
